@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/BasicUI/BasicUI.uss?fileID=7433441132597879392&amp;guid=5924e39056aad554ba3107396eb9adfc&amp;type=3#BasicUI" />
+    <ui:VisualElement name="PowerSupply" class="power-supply">
+        <ui:VisualElement name="BG" class="p-s-bg" style="background-image: url(&quot;project://database/Assets/Sprites/UI/Power%20supply.png?fileID=-2042941817&amp;guid=bbac19ed935549245a85880f65e23675&amp;type=3#Power supply_4&quot;);" />
+        <ui:VisualElement name="PowerIcon" class="p-s-icon" />
+        <ui:Label text="---" name="PowerAmount" class="p-s-amount" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,36 @@
+VisualElement {
+}
+
+.power-supply {
+    left: 1520px;
+    top: 805px;
+    position: absolute;
+    width: 200px;
+    height: 275px;
+}
+
+.p-s-bg {
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Sprites/UI/Power%20supply.png?fileID=-2042941817&guid=bbac19ed935549245a85880f65e23675&type=3#Power supply_4");
+}
+
+.p-s-icon {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background-image: url("project://database/Assets/Sprites/UI/Power%20supply.png?fileID=-1944405216&guid=bbac19ed935549245a85880f65e23675&type=3#Power supply_5");
+}
+
+.p-s-amount {
+    top: 195px;
+    position: absolute;
+    left: 25px;
+    width: 150px;
+    height: 50px;
+    -unity-font-style: bold;
+    font-size: 40px;
+    -unity-text-align: middle-center;
+    color: rgb(91, 91, 91);
+}
