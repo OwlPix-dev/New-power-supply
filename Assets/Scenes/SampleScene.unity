@@ -821,6 +821,86 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1288696495540434424, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _menuApps.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288696495540434424, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: '_menuApps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288696495540434424, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: '_menuApps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 508af7b60d87ba049aa3721a0810906e, type: 2}
+    - target: {fileID: 1288696495540434424, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: '_menuApps.Array.data[2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _aA
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _aS
+      value: 
+      objectReference: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _bA
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _bS
+      value: 
+      objectReference: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _menuApps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _newScreens.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: '_menuApps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: '_menuApps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _debugScreens.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _newScreens.Array.data[0]._app
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _newScreens.Array.data[1]._app
+      value: 
+      objectReference: {fileID: 11400000, guid: 508af7b60d87ba049aa3721a0810906e, type: 2}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _debugScreens.Array.data[0]._app
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _debugScreens.Array.data[1]._app
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _newScreens.Array.data[0]._screen
+      value: 
+      objectReference: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _newScreens.Array.data[1]._screen
+      value: 
+      objectReference: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+    - target: {fileID: 6206179109924940614, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _debugScreens.Array.data[1]._screen
+      value: 
+      objectReference: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
     - target: {fileID: 6300620656147008509, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

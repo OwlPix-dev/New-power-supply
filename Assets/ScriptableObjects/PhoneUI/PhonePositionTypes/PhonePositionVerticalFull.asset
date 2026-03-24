@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a1004eb174c21479e602f1dd5b8076, type: 3}
+  m_Name: PhonePositionVerticalFull
+  m_EditorClassIdentifier: 
+  _positionUI: {fileID: 9197481963319205126, guid: eb12540a1b636d34ead4db7e45253052, type: 3}
+  _positionScreens:
+  - _phoneScreen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+    _backButtonClassName: nav-panel-back-left
+    _homeButtonClassName: nav-panel-home-left
+  - _phoneScreen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+    _backButtonClassName: nav-panel-back-right
+    _homeButtonClassName: nav-panel-home-right
+  _switchPositionTypes:
+  - _switchPositionClassName: switch-left-screen
+    _switchScreens:
+    - {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+  - _switchPositionClassName: switch-right-screen
+    _switchScreens:
+    - {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}

@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PhoneUI/PhoneApps/VerticalPlayerInventory/VerticalPlayerInventory.uss?fileID=7433441132597879392&amp;guid=15b0adf42dcdf2f4f831c0a2c47b7c7e&amp;type=3#VerticalPlayerInventory" />
+    <ui:VisualElement style="flex-grow: 1; width: 500px; height: 700px; background-color: rgba(222, 40, 40, 0.51);" />
+</ui:UXML>

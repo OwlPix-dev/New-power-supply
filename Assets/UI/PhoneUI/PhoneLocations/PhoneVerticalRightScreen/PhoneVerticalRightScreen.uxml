@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PhoneUI/PhoneLocations/PhoneVerticalRightScreen/PhoneVerticalRightScreen.uss?fileID=7433441132597879392&amp;guid=cfcdf1fff6b9da743a2ebb0ee207ec07&amp;type=3#PhoneVerticalRightScreen" />
+    <ui:VisualElement style="width: 300px; height: 600px; background-color: rgba(9, 163, 0, 0.64); top: 190px; left: 971px; position: absolute;" />
+</ui:UXML>

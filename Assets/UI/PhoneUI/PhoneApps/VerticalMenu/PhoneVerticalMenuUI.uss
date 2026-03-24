@@ -1,0 +1,31 @@
+VisualElement {
+}
+
+.apps-container {
+    width: 500px;
+    height: 700px;
+    background-color: rgb(93, 93, 93);
+    padding-left: 12px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+}
+
+.app-container {
+    background-color: rgba(255, 92, 92, 0.29);
+    width: 80px;
+    height: 80px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    margin-left: 13px;
+    margin-top: 13px;
+}
+
+.app-icon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(96, 255, 0, 0.65);
+    align-self: center;
+}
+
+.app-name {
+}

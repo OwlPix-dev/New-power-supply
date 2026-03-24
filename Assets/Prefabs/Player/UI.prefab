@@ -59,12 +59,164 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2704676932423369385}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20221e57cac02ec46b5e87c4f6c84870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _uIDocument: {fileID: 1400721098624558631}
+--- !u!1 &3119224718459146424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3432641483686038809}
+  - component: {fileID: 6206179109924940614}
+  m_Layer: 0
+  m_Name: Phone UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3432641483686038809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119224718459146424}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8028106093696131893}
+  - {fileID: 2008828082045688711}
+  m_Father: {fileID: 6300620656147008509}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6206179109924940614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119224718459146424}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df96273f4b85748448453b2ab00099ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debugScreens:
+  - _screen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+    _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
+  - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+    _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+  _uIManager: {fileID: 7465669618371767189}
+  _defaultPositionType: {fileID: 11400000, guid: 473a1346a9f77bb4398a95f8abd3c80f, type: 2}
+  _menuApps: []
+  _screensObject: {fileID: 5659315388916139475}
+  _screenPanelSettings: {fileID: 11400000, guid: ffd358bb3064561439d67cb5fb8affff, type: 2}
+  _phoneFrameUIDocument: {fileID: 2912403845343565695}
+  _phonePositionSynchronizations:
+  - _mainPhonePosition: {fileID: 11400000, guid: 473a1346a9f77bb4398a95f8abd3c80f, type: 2}
+    _mainScreen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+    _comparePhonePosition: {fileID: 11400000, guid: 59f2dfcfeb70328458352c635feee88d, type: 2}
+    _compareScreen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+  - _mainPhonePosition: {fileID: 11400000, guid: 473a1346a9f77bb4398a95f8abd3c80f, type: 2}
+    _mainScreen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+    _comparePhonePosition: {fileID: 11400000, guid: ff2054fa1eca1ee44a6ed409f2bd906e, type: 2}
+    _compareScreen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+  _availablePhonePositions:
+  - {fileID: 11400000, guid: 473a1346a9f77bb4398a95f8abd3c80f, type: 2}
+  - {fileID: 11400000, guid: 59f2dfcfeb70328458352c635feee88d, type: 2}
+  - {fileID: 11400000, guid: ff2054fa1eca1ee44a6ed409f2bd906e, type: 2}
+--- !u!1 &5659315388916139475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2008828082045688711}
+  m_Layer: 0
+  m_Name: Screens
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2008828082045688711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5659315388916139475}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3432641483686038809}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6252891375759242259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8028106093696131893}
+  - component: {fileID: 2912403845343565695}
+  m_Layer: 0
+  m_Name: Phone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8028106093696131893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252891375759242259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3432641483686038809}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2912403845343565695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252891375759242259}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: ca24b953c0fae0a469163842b3cbf1e8, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 0}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!1 &6391803854778542389
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +294,7 @@ Transform:
   m_Children:
   - {fileID: 2466957542058182145}
   - {fileID: 6400846472587526988}
+  - {fileID: 3432641483686038809}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7465669618371767189
@@ -158,3 +311,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainUIController: {fileID: 2011371944184841193}
   _basicUIController: {fileID: 5081200429444612653}
+  _phoneUIController: {fileID: 6206179109924940614}
+  _initialUI: {fileID: 5081200429444612653}

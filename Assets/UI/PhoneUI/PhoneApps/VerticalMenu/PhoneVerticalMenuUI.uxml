@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PhoneUI/PhoneApps/VerticalMenu/PhoneVerticalMenuUI.uss?fileID=7433441132597879392&amp;guid=2dbbdbf06ad067245ac40bc9c917510e&amp;type=3#PhoneVerticalMenuUI" />
+    <ui:VisualElement name="AppsContainer" class="apps-container" style="flex-direction: row;" />
+</ui:UXML>

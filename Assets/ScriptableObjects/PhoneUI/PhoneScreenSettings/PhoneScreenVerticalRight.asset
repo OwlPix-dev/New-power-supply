@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4d2434611c12d42a2bd635eda22034, type: 3}
+  m_Name: PhoneScreenVerticalRight
+  m_EditorClassIdentifier: 
+  _screenPosition: {x: 990, y: 185}
+  _screenSize: {x: 500, y: 700}
+  _defaultApp: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
