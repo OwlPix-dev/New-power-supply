@@ -108,7 +108,7 @@ public class PhoneUIController : GameUI
     public bool SetScreenApp(NewScreen newScreen)
     {
         if (IsPhoneOpen == false) { return false; }
-
+        
         foreach (PhoneUIScreen currentPositionScreen in _currentPhonePosition.Screens)
         {
             if (currentPositionScreen == newScreen.Screen)
