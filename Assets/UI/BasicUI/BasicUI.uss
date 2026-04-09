@@ -7,6 +7,7 @@ VisualElement {
     position: absolute;
     width: 200px;
     height: 275px;
+    background-image: url("project://database/Assets/Sprites/UI/Power%20supply.png?fileID=-2042941817&guid=bbac19ed935549245a85880f65e23675&type=3#Power supply_4");
 }
 
 .p-s-bg {

@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 317697087}
   - component: {fileID: 317697086}
   - component: {fileID: 317697085}
+  - component: {fileID: 317697090}
+  - component: {fileID: 317697089}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -232,6 +234,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &317697089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317697084}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 688c5c2ceed813541bf86b3c3d15272b, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: d6a5f1b7bb58c45498d47d40420fc130, type: 3}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!114 &317697090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317697084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b62f18e3e8b59458a74849316e70ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uIDocument: {fileID: 317697089}
+  _uIData:
+    _slotsContainerClassName: slots-container
+    _slotClassName: slot
+    _itemsContainerClassName: items-container
+    _itemClassName: item
+  _shelfGrid: {x: 5, y: 3}
 --- !u!114 &330585548 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7017617662826728729, guid: c2c971de2a903ae4ea2c8aab69ccf59a, type: 3}
@@ -241,6 +281,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b785cd9c5c7c984f86d6303a19c1b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &358791607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7465669618371767189, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+  m_PrefabInstance: {fileID: 3617474254163691529}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db442d0e78b9a614780eef4f5782f875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &410087039
@@ -757,6 +808,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 627040553719752290, guid: e9cd3113136fac94794181d3e1dd618b, type: 3}
+      propertyPath: _uIManager
+      value: 
+      objectReference: {fileID: 358791607}
+    - target: {fileID: 627040553719752290, guid: e9cd3113136fac94794181d3e1dd618b, type: 3}
       propertyPath: _cameraManager
       value: 
       objectReference: {fileID: 330585548}
@@ -808,6 +863,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8270266065952241322, guid: e9cd3113136fac94794181d3e1dd618b, type: 3}
+      propertyPath: _debugItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bd8a0f77fe5a594eb97fd92f229752b, type: 2}
+    - target: {fileID: 8270266065952241322, guid: e9cd3113136fac94794181d3e1dd618b, type: 3}
+      propertyPath: _debugBackpack
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e70154e9f91b624faafa595c31189e3, type: 2}
+    - target: {fileID: 8270266065952241322, guid: e9cd3113136fac94794181d3e1dd618b, type: 3}
+      propertyPath: _currentBackpack
+      value: 
+      objectReference: {fileID: 11400000, guid: c7edac1d313fbeb4989d0b1e8adf2403, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -941,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7465669618371767189, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
+      propertyPath: _playerManager
+      value: 
+      objectReference: {fileID: 2060165066}
     - target: {fileID: 8658917577782863197, guid: cfde0e32a732ee84c9f61310e516689b, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1006,6 +1077,14 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 2060165066}
+    - target: {fileID: 7945186693761497080, guid: c2c971de2a903ae4ea2c8aab69ccf59a, type: 3}
+      propertyPath: NewScreen._app
+      value: 
+      objectReference: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+    - target: {fileID: 7945186693761497080, guid: c2c971de2a903ae4ea2c8aab69ccf59a, type: 3}
+      propertyPath: NewScreen._screen
+      value: 
+      objectReference: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
     - target: {fileID: 7945186693761497080, guid: c2c971de2a903ae4ea2c8aab69ccf59a, type: 3}
       propertyPath: _trackerTransform
       value: 

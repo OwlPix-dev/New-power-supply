@@ -22,7 +22,7 @@ public class PhoneUIScreen : ScriptableObject
 
     public void OpenApp(PhoneApp newApp, PhoneUIController phoneController)
     {
-        newApp = newApp == null ? _defaultApp : newApp;
+        newApp = newApp ?? _defaultApp;
 
         if (_currentApp == newApp) { return; }
 
@@ -71,6 +71,9 @@ public class PhoneUIScreen : ScriptableObject
 
     public void CloseScreen(PhoneUIController phoneController)
     {
+        if (_currentApp != null) { _currentApp.PhoneController = null; }
+        if (_currentApp != null) { _currentApp.AppScreens.Clear(); }
+
         CloseApp(phoneController);
     }
 }

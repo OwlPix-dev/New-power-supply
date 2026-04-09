@@ -1,4 +1,13 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/PhoneUI/PhoneApps/VerticalPlayerInventory/VerticalPlayerInventory.uss?fileID=7433441132597879392&amp;guid=15b0adf42dcdf2f4f831c0a2c47b7c7e&amp;type=3#VerticalPlayerInventory" />
-    <ui:VisualElement style="flex-grow: 1; width: 500px; height: 700px; background-color: rgba(222, 40, 40, 0.51);" />
+    <Style src="project://database/Assets/UI/PhoneUI/PhoneApps/VerticalPlayerInventory/VerticalPlayerInventoryUI.uss?fileID=7433441132597879392&amp;guid=15b0adf42dcdf2f4f831c0a2c47b7c7e&amp;type=3#VerticalPlayerInventoryUI" />
+    <ui:VisualElement style="position: absolute; width: 500px; height: 700px; background-color: rgb(66, 66, 66);">
+        <ui:VisualElement name="Title" style="height: 120px; width: 500px; background-color: rgb(180, 180, 180); justify-content: center; flex-direction: row;">
+            <ui:Label text="Inventory" style="font-size: 37px; -unity-font-style: bold; -unity-text-align: middle-center; letter-spacing: 7px; align-self: center;" />
+            <ui:VisualElement style="width: 100px; height: 100px; background-color: rgb(103, 103, 103); position: absolute; left: 373px; align-self: center;" />
+        </ui:VisualElement>
+        <ui:ScrollView mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="width: 500px; height: 580px;">
+            <ui:VisualElement class="slots-container" style="width: 500px; height: auto; position: relative;" />
+            <ui:VisualElement class="items-container" style="width: 100%; height: auto; position: absolute;" />
+        </ui:ScrollView>
+    </ui:VisualElement>
 </ui:UXML>

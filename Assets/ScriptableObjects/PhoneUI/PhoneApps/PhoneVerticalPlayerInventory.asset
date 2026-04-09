@@ -15,3 +15,5 @@ MonoBehaviour:
   _appUI: {fileID: 9197481963319205126, guid: 71104424d9f3c724fa6c20a2364e3532, type: 3}
   _appName: App
   _appIcon: {fileID: 430439734, guid: bbac19ed935549245a85880f65e23675, type: 3}
+  _slotsContainerClassName: slots-container
+  _slotClassName: slot

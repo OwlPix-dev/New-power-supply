@@ -12,6 +12,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerRotate _playerRotate;
     [SerializeField] private PlayerMove _playerMove;
 
+    [SerializeField] private PlayerInventory _playerInventory;
+
     [Space]
 
     [SerializeField] private CameraManager _cameraManager;
@@ -27,6 +29,8 @@ public class PlayerManager : MonoBehaviour
     public PlayerChangeCollider ChangeCollider => _changeCollider;
     public PlayerRotate PlayerRotate => _playerRotate;
     public PlayerMove PlayerMove => _playerMove;
+
+    public PlayerInventory PlayerInventory => _playerInventory;
 
     public CameraManager CameraManager => _cameraManager;
 

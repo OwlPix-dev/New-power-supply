@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3304013018827932399}
   - component: {fileID: 4407538293638105606}
   - component: {fileID: 6978425069659205949}
+  - component: {fileID: 8270266065952241322}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -118,6 +119,7 @@ MonoBehaviour:
   _changeCollider: {fileID: 4407538293638105606}
   _playerRotate: {fileID: 6978425069659205949}
   _playerMove: {fileID: 3304013018827932399}
+  _playerInventory: {fileID: 8270266065952241322}
   _cameraManager: {fileID: 0}
   _uIManager: {fileID: 0}
 --- !u!114 &3304013018827932399
@@ -168,9 +170,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49db5115424002e42883ecf3c40d652e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 0.01
-  _rotateSpeed: 5
+  _rotationSpeed: 360
+  _minMoveSqrMagnitude: 0.001
   _playerManager: {fileID: 627040553719752290}
+--- !u!114 &8270266065952241322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015740036926649457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babd5c555c9a77444b738314cc96984e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultInventorySize: {x: 5, y: 2}
+  _uIData:
+    _slotsContainerClassName: slots-container
+    _slotClassName: slot
+    _itemsContainerClassName: items-container
+    _itemClassName: item
+  _debugItem1: {fileID: 11400000, guid: 4bd8a0f77fe5a594eb97fd92f229752b, type: 2}
+  _debugItem2: {fileID: 11400000, guid: 4ecf00e7d4e3a6242ad6ffa892c576eb, type: 2}
+  _debugItem3: {fileID: 11400000, guid: e51be204f1787ba48be726c73c648887, type: 2}
+  _debugBackpack: {fileID: 0}
 --- !u!1 &8039599194072320352
 GameObject:
   m_ObjectHideFlags: 0

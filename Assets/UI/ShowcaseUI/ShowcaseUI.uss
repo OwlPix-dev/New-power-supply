@@ -21,20 +21,4 @@ VisualElement {
 }
 
 .item {
-    position: absolute;
-}
-
-.add-button {
-    top: 7px;
-    left: 5px;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-}
-
-.remove-button {
-    top: 53px;
-    left: -325px;
-    width: 20px;
-    height: 20px;
 }

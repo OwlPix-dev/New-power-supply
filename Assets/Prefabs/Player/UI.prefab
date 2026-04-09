@@ -111,13 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df96273f4b85748448453b2ab00099ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debugScreens:
-  - _screen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
-    _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
-  - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
-    _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
   _uIManager: {fileID: 7465669618371767189}
-  _defaultPositionType: {fileID: 11400000, guid: 473a1346a9f77bb4398a95f8abd3c80f, type: 2}
   _menuApps: []
   _screensObject: {fileID: 5659315388916139475}
   _screenPanelSettings: {fileID: 11400000, guid: ffd358bb3064561439d67cb5fb8affff, type: 2}
@@ -313,3 +307,10 @@ MonoBehaviour:
   _basicUIController: {fileID: 5081200429444612653}
   _phoneUIController: {fileID: 6206179109924940614}
   _initialUI: {fileID: 5081200429444612653}
+  _opensPhone:
+  - _keyCode: 9
+    _newScreens:
+    - _screen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+      _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
+    - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+      _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}

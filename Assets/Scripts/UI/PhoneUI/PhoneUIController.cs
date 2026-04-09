@@ -21,6 +21,8 @@ public class PhoneUIController : GameUI
 
     private PhonePositionType _currentPhonePosition;
 
+    public UIManager UIManager => _uIManager;
+
     public List<PhoneApp> MenuApps => _menuApps;
 
     public GameObject ScreensObject => _screensObject;
@@ -40,7 +42,7 @@ public class PhoneUIController : GameUI
         {
             foreach (PhoneUIScreen availablePositionScreen in availablePosition.Screens)
             {
-                availablePositionScreen.CloseApp(this);
+                availablePositionScreen.CloseScreen(this);
             }
         }
     }
@@ -227,4 +229,14 @@ public class PhonePositionSynchronization
 
     public PhonePositionType ComparePhonePosition => _comparePhonePosition;
     public PhoneUIScreen CompareScreen => _compareScreen;
+}
+
+[System.Serializable]
+public class OpenPhoneByKeyCode
+{
+    [SerializeField] private KeyCode _keyCode;
+    [SerializeField] private NewScreen[] _newScreens;
+
+    public KeyCode KeyCode => _keyCode;
+    public NewScreen[] NewScreens => _newScreens;
 }

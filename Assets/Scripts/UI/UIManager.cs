@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private PlayerManager _playerManager;
+
     [SerializeField] private MainUIController _mainUIController;
 
     [SerializeField] private BasicUIController _basicUIController;
@@ -9,7 +11,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameUI _initialUI;
 
+    [SerializeField] private OpenPhoneByKeyCode[] _opensPhone;
+
     private GameUI _currentUI;
+
+    public PlayerManager PlayerManager => _playerManager;
 
     public MainUIController MainUIController => _mainUIController;
 
@@ -36,5 +42,16 @@ public class UIManager : MonoBehaviour
         foreach (GameUI uIState in _uIStates) { uIState.StartUI(this); }
 
         if (_initialUI != null) { CurrentUI = _initialUI; }
+    }
+
+    private void Update()
+    {
+        foreach (OpenPhoneByKeyCode openPhone in _opensPhone)
+        {
+            if (Input.GetKeyDown(openPhone.KeyCode))
+            {
+                _phoneUIController.OpenPhoneByScreens(openPhone.NewScreens);
+            }
+        }
     }
 }
