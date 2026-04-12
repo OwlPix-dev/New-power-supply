@@ -41,22 +41,6 @@ public class PlayerInventory : InventorySystem
         {
             SetBackpack(_debugBackpack);
         }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Vector2Int maxAxis = InventoryGridMaxAxis;
-
-            bool[,] occupancyGrid = new bool[maxAxis.x, maxAxis.y];
-            List<List<Item>> inventoryGrid = InventoryGrid;
-
-            for (int x = 0; x < maxAxis.x; x++)
-            {
-                for (int y = 0; y < maxAxis.y; y++)
-                {
-                    Debug.Log($"In slot {x}, {y} {(inventoryGrid[x][y] != null ? inventoryGrid[x][y].name : "empty")} ");
-                }
-            }
-        }
     }
 
     public bool SetBackpack(Backpack backpack)

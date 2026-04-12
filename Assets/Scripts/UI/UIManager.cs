@@ -37,11 +37,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        if (_initialUI != null) { CurrentUI = _initialUI; }
+    }
+
     private void Start()
     {
         foreach (GameUI uIState in _uIStates) { uIState.StartUI(this); }
-
-        if (_initialUI != null) { CurrentUI = _initialUI; }
     }
 
     private void Update()
@@ -53,5 +56,10 @@ public class UIManager : MonoBehaviour
                 _phoneUIController.OpenPhoneByScreens(openPhone.NewScreens);
             }
         }
+    }
+
+    public bool IsUIOpen(GameUI compareUI)
+    {
+        return CurrentUI == compareUI;
     }
 }

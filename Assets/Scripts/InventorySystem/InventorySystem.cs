@@ -13,6 +13,28 @@ public abstract class InventorySystem : MonoBehaviour
 
     public List<List<Item>> InventoryGrid => _inventoryGrid;
 
+    public Item[] Items
+    {
+        get
+        {
+            List<Item> returnItems = new List<Item>();
+            Vector2Int maxAxis = InventoryGridMaxAxis;
+
+            for (int y = 0; y < InventoryGridMaxAxis.y; y++)
+            {
+                for (int x = 0; x < InventoryGridMaxAxis.x; x++)
+                {
+                    if (_inventoryGrid[x][y] != null)
+                    {
+                        returnItems.Add(_inventoryGrid[x][y]);
+                    }
+                }
+            }
+
+            return returnItems.ToArray();
+        }
+    }
+
     private void Start()
     {
         CalculateInventoryGrid();
@@ -93,14 +115,23 @@ public abstract class InventorySystem : MonoBehaviour
 
     private void RenderInventoryGrid(Vector2 slotSize, Vector2Int maxAxis, VisualElement slotsContainer, VisualElement itemsContainer, InventoryUIData uIData)
     {
-        slotsContainer.style.width = maxAxis.x * slotSize.x;
-        itemsContainer.style.width = maxAxis.x * slotSize.x;
+        void ContainerConfigure(VisualElement container, string contentClassName)
+        {
+            container.style.width = maxAxis.x * slotSize.x;
+            container.style.height = maxAxis.y * slotSize.y;
 
-        slotsContainer.style.height = maxAxis.y * slotSize.y;
-        itemsContainer.style.height = maxAxis.y * slotSize.y;
+            VisualElement[] removeElements = container.Children().
+            Where(element => element.ClassListContains(contentClassName)).
+            ToArray();
 
-        slotsContainer.Clear();
-        itemsContainer.Clear();
+            foreach (VisualElement removeElement in removeElements)
+            {
+                removeElement.RemoveFromHierarchy();
+            }
+        }
+
+        ContainerConfigure(slotsContainer, uIData.SlotClassName);
+        ContainerConfigure(itemsContainer, uIData.ItemClassName);
 
         for (int x = 0; x < InventoryGrid.Count; x++)
         {

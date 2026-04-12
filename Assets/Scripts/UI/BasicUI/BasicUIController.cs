@@ -10,10 +10,14 @@ public class BasicUIController : GameUI
     public override void OpenUI(UIManager uIManager)
     {
         _uIDocument.enabled = true;
+
+        base.OpenUI(uIManager);
     }
 
     public override void CloseUI(UIManager uIManager)
     {
+        base.CloseUI(uIManager);
+
         _uIDocument.enabled = false;
     }
 }

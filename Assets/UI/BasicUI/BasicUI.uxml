@@ -4,4 +4,11 @@
         <ui:VisualElement name="PowerIcon" class="p-s-icon" />
         <ui:Label text="---" name="PowerAmount" class="p-s-amount" />
     </ui:VisualElement>
+    <ui:VisualElement class="scroll-items" style="flex-grow: 1; position: absolute; top: 637px; left: 199px; flex-direction: row; align-items: center; height: 400px; width: 400px; justify-content: center;">
+        <ui:VisualElement style="flex-grow: 1;" />
+        <ui:VisualElement class="s-i-slots-grid" style="width: 300px; height: 200px; background-color: rgb(105, 105, 105); justify-content: center;">
+            <ui:VisualElement class="s-i-current-item" style="align-self: center; max-width: 300px; max-height: 300px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;" />
+    </ui:VisualElement>
 </ui:UXML>
