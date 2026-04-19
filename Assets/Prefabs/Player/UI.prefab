@@ -220,6 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2466957542058182145}
+  - component: {fileID: 8541176060448196782}
   - component: {fileID: 2011371944184841193}
   m_Layer: 0
   m_Name: Main UI
@@ -243,6 +244,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6300620656147008509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8541176060448196782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391803854778542389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 9385380feaf4eed479faa3f83b91f3cd, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 62686ac66bfdde0468f4efce8f2707bd, type: 3}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!114 &2011371944184841193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b67e1c000ce804e8715b7d4189e2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uIDocument: {fileID: 0}
+  _uIDocument: {fileID: 8541176060448196782}
 --- !u!1 &8658917577782863197
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6300620656147008509}
   - component: {fileID: 7465669618371767189}
+  - component: {fileID: 6342799880210565833}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -303,7 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db442d0e78b9a614780eef4f5782f875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerManager: {fileID: 0}
   _mainUIController: {fileID: 2011371944184841193}
+  _dragAndDropItems: {fileID: 6342799880210565833}
   _basicUIController: {fileID: 5081200429444612653}
   _phoneUIController: {fileID: 6206179109924940614}
   _initialUI: {fileID: 5081200429444612653}
@@ -314,3 +337,17 @@ MonoBehaviour:
       _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
     - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
       _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+--- !u!114 &6342799880210565833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8658917577782863197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36cb4e394213ed449a30b5083f1f1326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uIManager: {fileID: 7465669618371767189}
+  _dragTitleClassName: item-drag-title

@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private MainUIController _mainUIController;
 
+    [SerializeField] private DragAndDropItems _dragAndDropItems;
+
     [SerializeField] private BasicUIController _basicUIController;
     [SerializeField] private PhoneUIController _phoneUIController;
 
@@ -18,6 +20,8 @@ public class UIManager : MonoBehaviour
     public PlayerManager PlayerManager => _playerManager;
 
     public MainUIController MainUIController => _mainUIController;
+
+    public DragAndDropItems DragAndDropItems => _dragAndDropItems;
 
     public BasicUIController BasicUIController => _basicUIController;
     public PhoneUIController PhoneUIController => _phoneUIController;

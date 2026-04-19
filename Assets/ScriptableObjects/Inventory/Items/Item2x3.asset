@@ -16,4 +16,4 @@ MonoBehaviour:
   _description: Item description
   _icon: {fileID: -2042941817, guid: bbac19ed935549245a85880f65e23675, type: 3}
   _price: 10
-  _size: {x: 4, y: 3}
+  _size: {x: 2, y: 3}

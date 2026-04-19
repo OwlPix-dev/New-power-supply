@@ -61,7 +61,6 @@ public class PlayerScrollItems : MonoBehaviour
     private void Start()
     {
         if (_isUIOpen == true) { RenderScrollItems(); }
-
     }
 
     private void Update()

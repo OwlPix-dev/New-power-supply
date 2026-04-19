@@ -1,7 +1,7 @@
 VisualElement {
 }
 
-.slots-container {
+.content-container {
 }
 
 .slot {
@@ -15,9 +15,6 @@ VisualElement {
     border-bottom-color: rgb(0, 0, 0);
     background-color: rgb(151, 151, 151);
     position: absolute;
-}
-
-.items-container {
 }
 
 .item {

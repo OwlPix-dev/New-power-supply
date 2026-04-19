@@ -26,6 +26,7 @@ public class PhoneUIScreen : ScriptableObject
 
         if (_currentApp == newApp) { return; }
 
+        _currentApp?.CloseApp(this, phoneController);
         _currentApp = newApp;
 
         if (_appUIDocument == null)

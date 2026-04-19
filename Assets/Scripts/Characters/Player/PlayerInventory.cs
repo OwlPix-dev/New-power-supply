@@ -1,12 +1,14 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerInventory : InventorySystem
 {
-    [SerializeField] private Vector2Int _defaultInventorySize = new Vector2Int(5, 2);
+    [SerializeField] private PlayerManager _playerManager;
 
-    [SerializeField] private InventoryUIData _uIData;
+    [SerializeField] private Vector2Int _defaultInventorySize = new Vector2Int(5, 2);
 
     [SerializeField] private Item _debugItem;
 
@@ -18,20 +20,6 @@ public class PlayerInventory : InventorySystem
     private Backpack _currentBackpack;
 
     private List<PhoneUIScreen> _appScreens = new List<PhoneUIScreen>();
-
-    public List<PhoneUIScreen> AppScreens => _appScreens;
-
-    public PhoneUIScreen NewScreen
-    {
-        set
-        {
-            DebugButtons(value.AppUIDocument);
-
-            RenderInventoryUIByScreen(value);
-
-            _appScreens.Add(value);
-        }
-    }
 
     public bool IsInventoryOpen => _appScreens.Count > 0;
 
@@ -87,6 +75,106 @@ public class PlayerInventory : InventorySystem
         return true;
     }
 
+
+    public void AddInventoryScreen(PhoneUIScreen newScreen)
+    {
+        _appScreens.Add(newScreen);
+
+        if (_appScreens.Count == 1)
+        {
+            _playerManager.UIManager.DragAndDropItems.DragAndDropData.Add(new DragAndDropData(this));
+        }
+
+        GetNecessaryDragAndDropData().ItemsGrids.Add(new List<List<VisualElement>>());
+        GetNecessaryDragAndDropData().ItemPlacesGrids.Add(new List<List<VisualElement>>());
+
+        DebugButtons(newScreen.AppUIDocument);
+
+        InventoryRender();
+    }
+
+    public void RemoveInventoryScreen(PhoneUIScreen removeScreen)
+    {
+        int removeScreenIndex = _appScreens.IndexOf(removeScreen);
+
+        if (removeScreenIndex == -1) { return; }
+
+        _appScreens.RemoveAt(removeScreenIndex);
+
+        GetNecessaryDragAndDropData().ItemsGrids.RemoveAt(removeScreenIndex);
+        GetNecessaryDragAndDropData().ItemPlacesGrids.RemoveAt(removeScreenIndex);
+
+        if (IsInventoryOpen == false)
+        {
+            _playerManager.UIManager.DragAndDropItems.DragAndDropData.Remove(GetNecessaryDragAndDropData());
+        }
+    }
+
+    private DragAndDropData GetNecessaryDragAndDropData()
+    {
+        return _playerManager.UIManager.DragAndDropItems.DragAndDropData.FirstOrDefault(data => data.InventorySystem == this);
+    }
+
+    public override void CalculateInventoryGrid(bool isInventoryRender = false)
+    {
+        base.CalculateInventoryGrid(isInventoryRender);
+    }
+
+    private void CalculateDragAndDropGrids(bool isInventoryRender = false)
+    {
+        DragAndDropData necessaryDragAndDropData = GetNecessaryDragAndDropData();
+
+        if (necessaryDragAndDropData == null) { return; }
+
+        Vector2Int maxAxis = InventoryGridMaxAxis;
+
+        foreach (List<List<VisualElement>> itemsGrid in necessaryDragAndDropData.ItemsGrids)
+        {
+            CalculateGrid(itemsGrid, maxAxis);
+        }
+
+        foreach (List<List<VisualElement>> itemPlacesGrid in necessaryDragAndDropData.ItemPlacesGrids)
+        {
+            CalculateGrid(itemPlacesGrid, maxAxis);
+        }
+
+        for (int appIndex = 0; appIndex < _appScreens.Count; appIndex++)
+        {
+            VisualElement root = _appScreens[appIndex].AppUIDocument.rootVisualElement;
+            VisualElement contentContainer = root.Q<VisualElement>(className: ContentContainerClassName);
+
+            VisualElement[] slots = GetContents(contentContainer, ContentSlot.ContentClassName);
+            VisualElement[] items = GetContents(contentContainer, ContentItem.ContentClassName);
+
+            Array.Reverse(slots);
+            Array.Reverse(items);
+
+            int slotIndex = 0;
+            int itemIndex = 0;
+
+            for (int x = 0; x < maxAxis.x; x++)
+            {
+                for (int y = 0; y < maxAxis.y; y++)
+                {
+                    necessaryDragAndDropData.ItemPlacesGrids[appIndex][x][y] = slots[slotIndex];
+                    slotIndex++;
+
+                    if (InventoryGrid[x][y] == null)
+                    {
+                        necessaryDragAndDropData.ItemsGrids[appIndex][x][y] = null;
+                    }
+                    else
+                    {
+                        necessaryDragAndDropData.ItemsGrids[appIndex][x][y] = items[itemIndex];
+                        itemIndex++;
+                    }
+                }
+            }
+        }
+
+        if (isInventoryRender == true) { InventoryRender(); }
+    }
+
     public override Vector2Int GetInventoryGridSize()
     {
         return _currentBackpack == null ? _defaultInventorySize : _currentBackpack.Size;
@@ -96,13 +184,10 @@ public class PlayerInventory : InventorySystem
     {
         foreach (PhoneUIScreen appScreen in _appScreens)
         {
-            RenderInventoryUIByScreen(appScreen);
+            RenderInventoryUI(appScreen.AppUIDocument, isFixedY: false);
         }
-    }
 
-    private void RenderInventoryUIByScreen(PhoneUIScreen appScreen)
-    {
-        RenderInventoryUI(appScreen.AppUIDocument, _uIData, isFixedY: false);
+        CalculateDragAndDropGrids();
     }
 
     public void DebugButtons(UIDocument uIDocument)

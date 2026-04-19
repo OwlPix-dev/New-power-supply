@@ -6,8 +6,7 @@
             <ui:VisualElement style="width: 100px; height: 100px; background-color: rgb(103, 103, 103); position: absolute; left: 373px; align-self: center;" />
         </ui:VisualElement>
         <ui:ScrollView mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="width: 500px; height: 580px;">
-            <ui:VisualElement class="slots-container" style="width: 500px; height: auto; position: relative;" />
-            <ui:VisualElement class="items-container" style="width: 100%; height: auto; position: absolute;" />
+            <ui:VisualElement class="content-container" style="width: 500px; height: auto;" />
         </ui:ScrollView>
     </ui:VisualElement>
 </ui:UXML>

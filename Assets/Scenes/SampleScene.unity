@@ -265,12 +265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b62f18e3e8b59458a74849316e70ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uIDocument: {fileID: 317697089}
   _uIData:
     _slotsContainerClassName: slots-container
     _slotClassName: slot
     _itemsContainerClassName: items-container
     _itemClassName: item
+  _uIDocument: {fileID: 317697089}
   _shelfGrid: {x: 5, y: 3}
 --- !u!114 &330585548 stripped
 MonoBehaviour:
@@ -875,6 +875,10 @@ PrefabInstance:
       propertyPath: _currentBackpack
       value: 
       objectReference: {fileID: 11400000, guid: c7edac1d313fbeb4989d0b1e8adf2403, type: 2}
+    - target: {fileID: 8270266065952241322, guid: e9cd3113136fac94794181d3e1dd618b, type: 3}
+      propertyPath: _debugAddItemPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

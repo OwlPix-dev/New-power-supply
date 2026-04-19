@@ -1,0 +1,7 @@
+VisualElement {
+}
+
+.item-drag-title {
+    position: absolute;
+    visibility: hidden;
+}

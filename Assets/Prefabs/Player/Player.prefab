@@ -186,12 +186,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babd5c555c9a77444b738314cc96984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentContainerClassName: content-container
+  _contentSlot:
+    _contentClassName: slot
+    _layerIndex: 0
+  _contentItem:
+    _contentClassName: item
+    _layerIndex: 1
+  _playerManager: {fileID: 627040553719752290}
   _defaultInventorySize: {x: 5, y: 2}
-  _uIData:
-    _slotsContainerClassName: slots-container
-    _slotClassName: slot
-    _itemsContainerClassName: items-container
-    _itemClassName: item
   _debugItem: {fileID: 11400000, guid: 4ecf00e7d4e3a6242ad6ffa892c576eb, type: 2}
   _debugAddItemPosition: {x: 1, y: 0}
   _debugRemoveItemPosition: {x: 0, y: 0}

@@ -12,7 +12,7 @@ public class PhonePlayerInventory : PhoneApp
 
         void RegisterUI(GeometryChangedEvent evt)
         {
-            PhoneController.UIManager.PlayerManager.PlayerInventory.NewScreen = appScreen;
+            PhoneController.UIManager.PlayerManager.PlayerInventory.AddInventoryScreen(appScreen);
 
             root.UnregisterCallback<GeometryChangedEvent>(RegisterUI);
         }
@@ -24,6 +24,6 @@ public class PhonePlayerInventory : PhoneApp
     {
         base.CloseApp(appScreen, phoneController);
 
-        phoneController.UIManager.PlayerManager.PlayerInventory.AppScreens.Remove(appScreen);
+        phoneController.UIManager.PlayerManager.PlayerInventory.RemoveInventoryScreen(appScreen);
     }
 }

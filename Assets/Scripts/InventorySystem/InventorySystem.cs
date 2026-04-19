@@ -5,13 +5,25 @@ using UnityEngine.UIElements;
 
 public abstract class InventorySystem : MonoBehaviour
 {
+    [SerializeField] private string _contentContainerClassName = "content-container";
+
+    [SerializeField] private InventoryUIContent _contentSlot;
+    [SerializeField] private InventoryUIContent _contentItem;
+
+    private InventoryUIContent[] _contents => new InventoryUIContent[] { _contentSlot, _contentItem };
+
     private List<List<Item>> _inventoryGrid = new List<List<Item>>();
+
+    public string ContentContainerClassName => _contentContainerClassName;
+
+    public InventoryUIContent ContentSlot => _contentSlot;
+    public InventoryUIContent ContentItem => _contentItem;
+
+    public List<List<Item>> InventoryGrid => _inventoryGrid;
 
     public Vector2Int InventoryGridMaxAxis => new Vector2Int(
         _inventoryGrid.Count,
         Mathf.Max(_inventoryGrid.Select(items => items.Count).ToArray()));
-
-    public List<List<Item>> InventoryGrid => _inventoryGrid;
 
     public Item[] Items
     {
@@ -20,9 +32,9 @@ public abstract class InventorySystem : MonoBehaviour
             List<Item> returnItems = new List<Item>();
             Vector2Int maxAxis = InventoryGridMaxAxis;
 
-            for (int y = 0; y < InventoryGridMaxAxis.y; y++)
+            for (int y = 0; y < maxAxis.y; y++)
             {
-                for (int x = 0; x < InventoryGridMaxAxis.x; x++)
+                for (int x = 0; x < maxAxis.x; x++)
                 {
                     if (_inventoryGrid[x][y] != null)
                     {
@@ -40,48 +52,50 @@ public abstract class InventorySystem : MonoBehaviour
         CalculateInventoryGrid();
     }
 
-    public void CalculateInventoryGrid(bool isInventoryRender = false)
+    public void CalculateGrid<T>(List<List<T>> grid, Vector2Int newGridSize)
     {
-        Vector2Int inventoryNewGridSize = GetInventoryGridSize();
+        int maxX = grid.Count;
 
-        int maxX = InventoryGridMaxAxis.x;
-
-        if (maxX < inventoryNewGridSize.x)
+        if (maxX < newGridSize.x)
         {
-            for (int x = maxX; x < inventoryNewGridSize.x; x++)
+            for (int x = maxX; x < newGridSize.x; x++)
             {
-                _inventoryGrid.Add(new List<Item>());
+                grid.Add(new List<T>());
             }
         }
-        else if (maxX > inventoryNewGridSize.x)
+        else if (maxX > newGridSize.x)
         {
-            _inventoryGrid.RemoveRange(inventoryNewGridSize.x, maxX - inventoryNewGridSize.x);
+            grid.RemoveRange(newGridSize.x, maxX - newGridSize.x);
         }
 
-        foreach (List<Item> items in _inventoryGrid)
+        foreach (List<T> gridElements in grid)
         {
-            if (items.Count < inventoryNewGridSize.y)
+            if (gridElements.Count < newGridSize.y)
             {
-                for (int y = items.Count; y < inventoryNewGridSize.y; y++)
+                for (int y = gridElements.Count; y < newGridSize.y; y++)
                 {
-                    items.Add(null);
+                    gridElements.Add(default);
                 }
             }
-            else if (items.Count > inventoryNewGridSize.y)
+            else if (gridElements.Count > newGridSize.y)
             {
-                items.RemoveRange(inventoryNewGridSize.y, items.Count - inventoryNewGridSize.y);
+                gridElements.RemoveRange(newGridSize.y, gridElements.Count - newGridSize.y);
             }
         }
+    }
+
+    public virtual void CalculateInventoryGrid(bool isInventoryRender = false)
+    {
+        CalculateGrid(_inventoryGrid, GetInventoryGridSize());
 
         if (isInventoryRender == true) { InventoryRender(); }
     }
 
-    public void RenderInventoryUI(UIDocument uIDocument, InventoryUIData uIData, bool isFixedX = true, bool isFixedY = true)
+    public void RenderInventoryUI(UIDocument uIDocument, bool isFixedX = true, bool isFixedY = true)
     {
         VisualElement root = uIDocument.rootVisualElement;
 
-        VisualElement slotsContainer = root.Q<VisualElement>(className: uIData.SlotsContainerClassName);
-        VisualElement itemsContainer = root.Q<VisualElement>(className: uIData.ItemsContainerClassName);
+        VisualElement contentContainer = root.Q<VisualElement>(className: _contentContainerClassName);
 
         Vector2 slotSize = Vector2.one;
 
@@ -89,84 +103,111 @@ public abstract class InventorySystem : MonoBehaviour
 
         if (isFixedX == true)
         {
-            slotSize.x = slotsContainer.resolvedStyle.width / maxAxis.x;
+            slotSize.x = contentContainer.resolvedStyle.width / maxAxis.x;
         }
 
         if (isFixedY == true)
         {
-            slotSize.y = slotsContainer.resolvedStyle.height / maxAxis.y;
+            slotSize.y = contentContainer.resolvedStyle.height / maxAxis.y;
         }
 
         slotSize.x = isFixedX == false ? slotSize.y : slotSize.x;
         slotSize.y = isFixedY == false ? slotSize.x : slotSize.y;
 
-        RenderInventoryGrid(slotSize, maxAxis, slotsContainer, itemsContainer, uIData);
+        RenderInventoryGrid(slotSize, maxAxis, contentContainer);
     }
 
-    public void RenderInventoryUI(UIDocument uIDocument, InventoryUIData uIData, Vector2 slotSize)
+    public void RenderInventoryUI(UIDocument uIDocument, Vector2 slotSize)
     {
         VisualElement root = uIDocument.rootVisualElement;
 
-        VisualElement slotsContainer = root.Q<VisualElement>(className: uIData.SlotsContainerClassName);
-        VisualElement itemsContainer = root.Q<VisualElement>(className: uIData.ItemsContainerClassName);
+        VisualElement contentContainer = root.Q<VisualElement>(className: _contentContainerClassName);
 
-        RenderInventoryGrid(slotSize, InventoryGridMaxAxis, slotsContainer, itemsContainer, uIData);
+        RenderInventoryGrid(slotSize, InventoryGridMaxAxis, contentContainer);
     }
 
-    private void RenderInventoryGrid(Vector2 slotSize, Vector2Int maxAxis, VisualElement slotsContainer, VisualElement itemsContainer, InventoryUIData uIData)
+    private void RenderInventoryGrid(Vector2 slotSize, Vector2Int maxAxis, VisualElement contentContainer)
     {
-        void ContainerConfigure(VisualElement container, string contentClassName)
+        contentContainer.style.width = maxAxis.x * slotSize.x;
+        contentContainer.style.height = maxAxis.y * slotSize.y;
+
+        foreach (InventoryUIContent content in _contents)
         {
-            container.style.width = maxAxis.x * slotSize.x;
-            container.style.height = maxAxis.y * slotSize.y;
-
-            VisualElement[] removeElements = container.Children().
-            Where(element => element.ClassListContains(contentClassName)).
-            ToArray();
-
-            foreach (VisualElement removeElement in removeElements)
+            foreach (VisualElement element in GetContents(contentContainer, content.ContentClassName))
             {
-                removeElement.RemoveFromHierarchy();
+                switch (content)
+                {
+                    case InventoryUIContent item when item == _contentItem:
+                        RemoveItemTitle(element);
+                        break;
+                    case InventoryUIContent slot when slot == _contentSlot:
+                        RemoveSlotTitle(element);
+                        break;
+                }
+
+                element.RemoveFromHierarchy();
             }
         }
-
-        ContainerConfigure(slotsContainer, uIData.SlotClassName);
-        ContainerConfigure(itemsContainer, uIData.ItemClassName);
 
         for (int x = 0; x < InventoryGrid.Count; x++)
         {
             for (int y = 0; y < InventoryGrid[x].Count; y++)
             {
-                VisualElement newSlot = new VisualElement();
-                newSlot.AddToClassList(uIData.SlotClassName);
+                int backSlotIndex = _contentSlot.LayerIndex - 1;
+                int slotNumber = backSlotIndex < 0 ? 0 : GetContents(contentContainer, _contents[backSlotIndex].ContentClassName).Length;
 
-                newSlot.style.width = slotSize.x;
-                newSlot.style.height = slotSize.y;
-
-                newSlot.style.left = x * slotSize.x;
-                newSlot.style.top = y * slotSize.y;
-
-                slotsContainer.Add(newSlot);
+                VisualElement slot = SlotConfigure(_contentSlot.ContentClassName, slotSize, new Vector2Int(x, y));
+                contentContainer.Insert(slotNumber, slot);
 
                 Item item = InventoryGrid[x][y];
-
                 if (item != null)
                 {
-                    VisualElement newItem = new VisualElement();
-                    newItem.AddToClassList(uIData.ItemClassName);
+                    int backItemIndex = _contentItem.LayerIndex - 1;
+                    int itemNumber = backItemIndex < 0 ? 0 : GetContents(contentContainer, _contents[backItemIndex].ContentClassName).Length;
 
-                    newItem.style.backgroundImage = new StyleBackground(item.Icon);
-
-                    newItem.style.width = item.Size.x * slotSize.x;
-                    newItem.style.height = item.Size.y * slotSize.y;
-
-                    newItem.style.left = x * slotSize.x;
-                    newItem.style.top = y * slotSize.y;
-
-                    itemsContainer.Add(newItem);
+                    VisualElement itemTitle = ItemConfigure(item, _contentItem.ContentClassName, slotSize, new Vector2Int(x, y));
+                    contentContainer.Insert(itemNumber, itemTitle);
                 }
             }
         }
+    }
+
+    public VisualElement[] GetContents(VisualElement contentContainer, string contentClassName)
+    {
+        return contentContainer.Children().Where(element => element.ClassListContains(contentClassName) == true).ToArray();
+    }
+
+    public virtual void RemoveItemTitle(VisualElement item) { }
+    public virtual void RemoveSlotTitle(VisualElement slot) { }
+
+    public virtual VisualElement ItemConfigure(Item item, string itemClassName, Vector2 slotSize, Vector2Int itemPosition)
+    {
+        VisualElement newItem = new VisualElement();
+        newItem.AddToClassList(itemClassName);
+
+        newItem.style.backgroundImage = new StyleBackground(item.Icon);
+
+        newItem.style.width = item.Size.x * slotSize.x;
+        newItem.style.height = item.Size.y * slotSize.x;
+
+        newItem.style.left = itemPosition.x * slotSize.x;
+        newItem.style.top = itemPosition.y * slotSize.x;
+
+        return newItem;
+    }
+
+    public virtual VisualElement SlotConfigure(string slotClassName, Vector2 slotSize, Vector2Int slotPosition)
+    {
+        VisualElement newSlot = new VisualElement();
+        newSlot.AddToClassList(slotClassName);
+
+        newSlot.style.width = slotSize.x;
+        newSlot.style.height = slotSize.y;
+
+        newSlot.style.left = slotPosition.x * slotSize.x;
+        newSlot.style.top = slotPosition.y * slotSize.x;
+
+        return newSlot;
     }
 
     public bool AddItem(Item newItem, bool isInventoryRender = false)
@@ -210,7 +251,7 @@ public abstract class InventorySystem : MonoBehaviour
         return false;
     }
 
-    private void PlaceItem(Item item, Vector2Int itemPosition, bool isInventoryRender)
+    public virtual void PlaceItem(Item item, Vector2Int itemPosition, bool isInventoryRender)
     {
         _inventoryGrid[itemPosition.x][itemPosition.y] = item;
 
@@ -303,23 +344,32 @@ public abstract class InventorySystem : MonoBehaviour
         return occupancyGrid;
     }
 
+    public virtual bool PickItem(Vector2Int itemPosition)
+    {
+        return RemoveItemByPosition(itemPosition, isInventoryRender: true);
+    }
+
+    public virtual bool PutItem(Item item, Vector2Int itemPosition)
+    {
+        return AddItemByPosition(item, itemPosition, isInventoryRender: true);
+    }
+
+    public virtual bool LoseItem(Item item, Vector2Int itemBackPosition)
+    {
+        return AddItemByPosition(item, itemBackPosition, isInventoryRender: true);
+    }
+
     public abstract Vector2Int GetInventoryGridSize();
 
     public abstract void InventoryRender();
 }
 
 [System.Serializable]
-public class InventoryUIData
+public class InventoryUIContent
 {
-    [SerializeField] private string _slotsContainerClassName = "slots-container";
-    [SerializeField] private string _slotClassName = "slot";
+    [SerializeField] private string _contentClassName;
+    [SerializeField] private int _layerIndex;
 
-    [SerializeField] private string _itemsContainerClassName = "items-container";
-    [SerializeField] private string _itemClassName = "item";
-
-    public string SlotsContainerClassName => _slotsContainerClassName;
-    public string SlotClassName => _slotClassName;
-
-    public string ItemsContainerClassName => _itemsContainerClassName;
-    public string ItemClassName => _itemClassName;
+    public string ContentClassName => _contentClassName;
+    public int LayerIndex => _layerIndex;
 }
