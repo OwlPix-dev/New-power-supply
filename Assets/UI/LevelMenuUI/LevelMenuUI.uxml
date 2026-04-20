@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/LevelMenuUI/LevelMenuUI.uss?fileID=7433441132597879392&amp;guid=2735614d0560d8b4f80b9a6a524611b9&amp;type=3#LevelMenuUI" />
+    <ui:VisualElement name="LevelFrame" class="level-frame">
+        <ui:VisualElement name="ContentContainer" class="content-container">
+            <ui:ScrollView name="LevelName" mode="Horizontal" horizontal-scroller-visibility="Hidden" class="level-name">
+                <ui:Label text="Level Name Level Name Level Name Level Name Level Name" name="LevelName" class="level-name-text" />
+            </ui:ScrollView>
+            <ui:VisualElement name="LevelPhoto" class="level-photo" />
+            <ui:ScrollView name="LevelDescrip" class="level-descrip">
+                <ui:VisualElement name="LevelDescripFrame" class="level-descrip-farme">
+                    <ui:Label text="Descrip" name="LevelDescripText" class="level-descrip-text" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

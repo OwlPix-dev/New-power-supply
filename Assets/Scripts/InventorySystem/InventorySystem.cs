@@ -7,6 +7,8 @@ public abstract class InventorySystem : MonoBehaviour
 {
     [SerializeField] private string _contentContainerClassName = "content-container";
 
+    [SerializeField] private Vector2 _itemPadding = new Vector2(15, 15);
+
     [SerializeField] private InventoryUIContent _contentSlot;
     [SerializeField] private InventoryUIContent _contentItem;
 
@@ -187,11 +189,11 @@ public abstract class InventorySystem : MonoBehaviour
 
         newItem.style.backgroundImage = new StyleBackground(item.Icon);
 
-        newItem.style.width = item.Size.x * slotSize.x;
-        newItem.style.height = item.Size.y * slotSize.x;
+        newItem.style.width = item.Size.x * slotSize.x - _itemPadding.x * 2;
+        newItem.style.height = item.Size.y * slotSize.y - _itemPadding.y * 2;
 
-        newItem.style.left = itemPosition.x * slotSize.x;
-        newItem.style.top = itemPosition.y * slotSize.x;
+        newItem.style.left = itemPosition.x * slotSize.x + _itemPadding.x;
+        newItem.style.top = itemPosition.y * slotSize.y + _itemPadding.y;
 
         return newItem;
     }
@@ -205,7 +207,7 @@ public abstract class InventorySystem : MonoBehaviour
         newSlot.style.height = slotSize.y;
 
         newSlot.style.left = slotPosition.x * slotSize.x;
-        newSlot.style.top = slotPosition.y * slotSize.x;
+        newSlot.style.top = slotPosition.y * slotSize.y;
 
         return newSlot;
     }

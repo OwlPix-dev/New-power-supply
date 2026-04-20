@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Middle backpack
   _description: Item description
-  _icon: {fileID: 0}
+  _icon: {fileID: 430439734, guid: bbac19ed935549245a85880f65e23675, type: 3}
   _price: 50
   _size: {x: 6, y: 8}

@@ -15,6 +15,7 @@ public class PlayerScrollItems : MonoBehaviour
     [SerializeField] private string _slotClassName;
 
     [SerializeField] private Vector2 _slotSize = new Vector2(100, 100);
+    [SerializeField] private Vector2 _itemPadding = new Vector2(15, 15);
 
     [SerializeField] private Vector2Int _defaultSlotGridSize = new Vector2Int(3, 2);
 
@@ -130,8 +131,8 @@ public class PlayerScrollItems : MonoBehaviour
             }
         }
 
-        titleItem.style.width = currentItem == null ? 0 : _slotSize.x * currentItem.Size.x;
-        titleItem.style.height = currentItem == null ? 0 : _slotSize.y * currentItem.Size.y;
+        titleItem.style.width = currentItem == null ? 0 : _slotSize.x * currentItem.Size.x - _itemPadding.x * 2;
+        titleItem.style.height = currentItem == null ? 0 : _slotSize.y * currentItem.Size.y - _itemPadding.y * 2;
 
         titleItem.style.backgroundImage = currentItem == null ? new StyleBackground() : new StyleBackground(currentItem.Icon);
     }

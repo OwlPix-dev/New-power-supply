@@ -1,0 +1,101 @@
+VisualElement {
+}
+
+.level-frame {
+    position: absolute;
+    height: 1080px;
+    width: 550px;
+    background-color: rgb(59, 59, 59);
+    right: 0;
+    align-items: center;
+}
+
+.content-container {
+    top: 25px;
+    width: 500px;
+}
+
+.level-photo {
+    width: 500px;
+    background-color: rgb(45, 45, 45);
+    height: 278px;
+}
+
+.level-name {
+}
+
+.level-name-text {
+    font-size: 30px;
+    white-space: pre-wrap;
+    color: rgb(255, 255, 255);
+}
+
+.level-descrip {
+    top: 25px;
+    height: 435px;
+}
+
+.level-descrip-farme {
+    background-color: rgb(45, 45, 45);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.level-descrip-text {
+    white-space: pre-wrap;
+    font-size: 26px;
+    color: rgb(255, 255, 255);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    -unity-text-align: middle-left;
+    padding-right: 30px;
+}
+
+.to-level-button {
+    background-color: rgb(72, 215, 66);
+    color: rgb(255, 255, 255);
+    padding-top: 0;
+    padding-bottom: 0;
+    position: absolute;
+    top: 915px;
+    width: 200px;
+    height: 100px;
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    left: 305px;
+    font-size: 35px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.back-button {
+    background-color: rgb(215, 66, 67);
+    color: rgb(255, 255, 255);
+    padding-top: 0;
+    padding-bottom: 0;
+    position: absolute;
+    top: 915px;
+    width: 200px;
+    height: 100px;
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    left: 45px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    font-size: 35px;
+}

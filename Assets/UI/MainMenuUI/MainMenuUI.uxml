@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenuUI/MainMenuUI.uss?fileID=7433441132597879392&amp;guid=613781d234fcc0c489a9e5180940e668&amp;type=3#MainMenuUI" />
+    <ui:VisualElement name="Buttons" class="buttons-container" style="background-color: rgba(0, 0, 0, 0.48); height: auto;">
+        <ui:Button text="Continue" name="ContinueButton" class="menu-active-button" />
+        <ui:Button text="New Game" name="NewGameButton" class="menu-active-button" />
+        <ui:Button text="Settings" name="SettingsButton" class="menu-active-button" />
+        <ui:Button text="Exit" name="ExitButton" class="menu-active-button" />
+    </ui:VisualElement>
+</ui:UXML>

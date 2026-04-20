@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentContainerClassName: content-container
+  _itemPadding: {x: 15, y: 15}
   _contentSlot:
     _contentClassName: slot
     _layerIndex: 0
@@ -195,6 +196,7 @@ MonoBehaviour:
     _layerIndex: 1
   _playerManager: {fileID: 627040553719752290}
   _defaultInventorySize: {x: 5, y: 2}
+  _backpackClassName: backpack
   _debugItem: {fileID: 11400000, guid: 4ecf00e7d4e3a6242ad6ffa892c576eb, type: 2}
   _debugAddItemPosition: {x: 1, y: 0}
   _debugRemoveItemPosition: {x: 0, y: 0}
@@ -214,12 +216,12 @@ MonoBehaviour:
   _playerManager: {fileID: 627040553719752290}
   _scrollActions:
   - _scrollKey: 113
-    _scrollDistance: 1
+    _scrollDistance: -1
     _scrollButtonClassName: s-i-left-arrow
     _scrollButtonContainerClassName: scroll-items
     _scrollButtonIndexInContainer: 0
   - _scrollKey: 101
-    _scrollDistance: -1
+    _scrollDistance: 1
     _scrollButtonClassName: s-i-right-arrow
     _scrollButtonContainerClassName: scroll-items
     _scrollButtonIndexInContainer: 4
@@ -230,6 +232,7 @@ MonoBehaviour:
   _currentItemClassName: s-i-current-item
   _slotClassName: s-i-slot
   _slotSize: {x: 100, y: 100}
+  _itemPadding: {x: 15, y: 15}
   _defaultSlotGridSize: {x: 3, y: 2}
 --- !u!1 &8039599194072320352
 GameObject:

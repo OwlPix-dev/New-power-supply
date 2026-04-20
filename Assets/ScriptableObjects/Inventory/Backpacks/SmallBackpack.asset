@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Small backpack
   _description: Item description
-  _icon: {fileID: 0}
+  _icon: {fileID: -1944405216, guid: bbac19ed935549245a85880f65e23675, type: 3}
   _price: 30
   _size: {x: 5, y: 4}

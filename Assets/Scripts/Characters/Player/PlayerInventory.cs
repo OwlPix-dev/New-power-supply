@@ -10,6 +10,8 @@ public class PlayerInventory : InventorySystem
 
     [SerializeField] private Vector2Int _defaultInventorySize = new Vector2Int(5, 2);
 
+    [SerializeField] private string _backpackClassName;
+
     [SerializeField] private Item _debugItem;
 
     [SerializeField] private Vector2Int _debugAddItemPosition;
@@ -142,6 +144,9 @@ public class PlayerInventory : InventorySystem
         {
             VisualElement root = _appScreens[appIndex].AppUIDocument.rootVisualElement;
             VisualElement contentContainer = root.Q<VisualElement>(className: ContentContainerClassName);
+            VisualElement backpackTitle = root.Q<VisualElement>(className: _backpackClassName);
+
+            backpackTitle.style.backgroundImage = _currentBackpack == null ? new StyleBackground() : new StyleBackground(_currentBackpack.Icon);
 
             VisualElement[] slots = GetContents(contentContainer, ContentSlot.ContentClassName);
             VisualElement[] items = GetContents(contentContainer, ContentItem.ContentClassName);
