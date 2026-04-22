@@ -210,7 +210,6 @@ public class PhoneUIController : UIState
             _lastScreens.Clear();
             foreach (PhoneUIScreen screen in _currentPhonePosition.Screens)
             {
-                Debug.Log(screen.CurrentApp);
                 _lastScreens.Add(new NewScreen(screen, screen.CurrentApp));
             }
         }
