@@ -21,7 +21,14 @@ public class PlayerScrollItems : MonoBehaviour
 
     private int _currentItemNumber;
 
-    private bool _isUIOpen => _playerManager.UIManager.IsUIOpen(_playerManager.UIManager.BasicUIController);
+    private bool _isUIOpen
+    {
+        get
+        {
+            UIManager uIManager = _playerManager.UIManager;
+            return uIManager.CurrentUI == uIManager.BasicUIController;
+        }
+    }
 
     public Item CurrentItem
     {

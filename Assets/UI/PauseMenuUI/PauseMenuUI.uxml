@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PauseMenuUI/PauseMenuUI.uss?fileID=7433441132597879392&amp;guid=7acabe222c783c84d97243c6c4ae1dc1&amp;type=3#PauseMenuUI" />
+    <ui:VisualElement name="MenuFrame" class="menu-frame">
+        <ui:Label text="PAUSE" name="MenuTitle" class="menu-title" />
+        <ui:VisualElement name="ServiceButtons" class="menu-service-buttons" />
+        <ui:VisualElement name="GameButtons" class="menu-game-buttons" />
+    </ui:VisualElement>
+</ui:UXML>

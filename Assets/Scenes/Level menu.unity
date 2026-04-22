@@ -632,7 +632,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 177489226809123707, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 177489226809123707, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: m_LocalPosition.y
@@ -640,7 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177489226809123707, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.83
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 177489226809123707, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: m_LocalRotation.w
@@ -676,7 +676,7 @@ PrefabInstance:
       objectReference: {fileID: 630803385}
     - target: {fileID: 3094769751869432640, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: _maxRestrictionPoint.x
-      value: 25
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3094769751869432640, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: _maxRestrictionPoint.y
@@ -684,7 +684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3094769751869432640, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: _maxRestrictionPoint.z
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3094769751869432640, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: _minRestrictionPoint.x

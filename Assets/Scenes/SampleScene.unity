@@ -265,11 +265,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b62f18e3e8b59458a74849316e70ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uIData:
-    _slotsContainerClassName: slots-container
-    _slotClassName: slot
-    _itemsContainerClassName: items-container
-    _itemClassName: item
+  _contentContainerClassName: content-container
+  _itemPadding: {x: 15, y: 15}
+  _contentSlot:
+    _contentClassName: 
+    _layerIndex: 0
+  _contentItem:
+    _contentClassName: 
+    _layerIndex: 0
   _uIDocument: {fileID: 317697089}
   _shelfGrid: {x: 5, y: 3}
 --- !u!114 &330585548 stripped

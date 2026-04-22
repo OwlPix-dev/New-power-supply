@@ -8,14 +8,15 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private DragAndDropItems _dragAndDropItems;
 
+    [SerializeField] private PauseMenuUIController _pauseMenuUIController;
     [SerializeField] private BasicUIController _basicUIController;
     [SerializeField] private PhoneUIController _phoneUIController;
 
-    [SerializeField] private GameUI _initialUI;
+    [SerializeField] private UIState[] _uIStates;
+    [SerializeField] private UIState _initialUI;
 
-    [SerializeField] private OpenPhoneByKeyCode[] _opensPhone;
-
-    private GameUI _currentUI;
+    private UIState _previousUI;
+    private UIState _currentUI;
 
     public PlayerManager PlayerManager => _playerManager;
 
@@ -23,47 +24,44 @@ public class UIManager : MonoBehaviour
 
     public DragAndDropItems DragAndDropItems => _dragAndDropItems;
 
+    public PauseMenuUIController PauseMenuUIController => _pauseMenuUIController;
     public BasicUIController BasicUIController => _basicUIController;
     public PhoneUIController PhoneUIController => _phoneUIController;
 
-    public GameUI[] _uIStates => new GameUI[] { _basicUIController, _phoneUIController };
+    public UIState[] UIStates => _uIStates;
 
-    public GameUI CurrentUI
+    public UIState PreviousUI => _previousUI;
+
+    public UIState CurrentUI
     {
         get => _currentUI;
         set
         {
             if (_currentUI == value) { return; }
 
-            _currentUI?.CloseUI(this);
+            _previousUI = _currentUI;
+            _previousUI?.CloseUI(this);
             _currentUI = value;
-            _currentUI?.OpenUI(this);
         }
     }
 
     private void Awake()
     {
-        if (_initialUI != null) { CurrentUI = _initialUI; }
+        if (_initialUI != null) { _initialUI.OpenUI(this); }
     }
 
     private void Start()
     {
-        foreach (GameUI uIState in _uIStates) { uIState.StartUI(this); }
+        foreach (UIState uIState in _uIStates) { uIState.StartUI(this); }
     }
 
     private void Update()
     {
-        foreach (OpenPhoneByKeyCode openPhone in _opensPhone)
+        foreach (UIState uIState in _uIStates)
         {
-            if (Input.GetKeyDown(openPhone.KeyCode))
-            {
-                _phoneUIController.OpenPhoneByScreens(openPhone.NewScreens);
-            }
-        }
-    }
+            if (_currentUI == uIState) { continue; }
 
-    public bool IsUIOpen(GameUI compareUI)
-    {
-        return CurrentUI == compareUI;
+            uIState.UpdatePassiveUI(this);
+        }
     }
 }

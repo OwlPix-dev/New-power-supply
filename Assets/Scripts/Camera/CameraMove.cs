@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    [SerializeField] private MoveKey[] _moveKeys;
+    [SerializeField] private CameraMoveKey[] _moveKeys;
 
-    [SerializeField] private SpeedFactor _acceleration;
-    [SerializeField] private SpeedFactor _braking;
+    [SerializeField] private CameraSpeedFactor _acceleration;
+    [SerializeField] private CameraSpeedFactor _braking;
 
     [SerializeField] private Vector3 _minRestrictionPoint;
     [SerializeField] private Vector3 _maxRestrictionPoint;
@@ -24,6 +24,11 @@ public class CameraMove : MonoBehaviour
         _transform = transform;
     }
 
+    private void Start()
+    {
+        MoveCameraToRestrictionZone();
+    }
+
     private void Update()
     {
         if (_inputVector != Vector3.zero)
@@ -31,7 +36,7 @@ public class CameraMove : MonoBehaviour
             _inputVector = Vector3.zero;
         }
         
-        foreach (MoveKey moveKey in _moveKeys)
+        foreach (CameraMoveKey moveKey in _moveKeys)
         {
             if (Input.GetKey(moveKey.Key) == true)
             {
@@ -79,19 +84,14 @@ public class CameraMove : MonoBehaviour
             forward * _moveVector.z +
             right * _moveVector.x;
 
-        Vector3 nextPosition = _transform.position + cameraMove * _speed * speedFactor * Time.deltaTime;
-
-        bool isCanMove =
-            nextPosition.x > _minRestrictionPoint.x && nextPosition.x < _maxRestrictionPoint.x &&
-            nextPosition.z > _minRestrictionPoint.z && nextPosition.z < _maxRestrictionPoint.z;
-
-        if (cameraMove != Vector3.zero && isCanMove == true)
+        if (cameraMove != Vector3.zero)
         {
             _transform.position += cameraMove * _speed * speedFactor * Time.deltaTime;
+            MoveCameraToRestrictionZone();
         }
     }
 
-    private float CalculateSpeedFactor(float timer, SpeedFactor speedFactor)
+    private float CalculateSpeedFactor(float timer, CameraSpeedFactor speedFactor)
     {
         if (timer > speedFactor.StartDuration && timer < speedFactor.FactorDuration)
         {
@@ -100,10 +100,19 @@ public class CameraMove : MonoBehaviour
 
         return 1;
     }
+
+    private void MoveCameraToRestrictionZone()
+    {
+        _transform.position = new Vector3(
+            Mathf.Clamp(_transform.position.x, _minRestrictionPoint.x, _maxRestrictionPoint.x),
+            _transform.position.y,
+            Mathf.Clamp(_transform.position.z, _minRestrictionPoint.z, _maxRestrictionPoint.z)
+        );
+    }
 }
 
 [System.Serializable]
-public class MoveKey
+public class CameraMoveKey
 {
     [SerializeField] private KeyCode _key;
     [SerializeField] private Vector3Int _moveVector;
@@ -113,7 +122,7 @@ public class MoveKey
 }
 
 [System.Serializable]
-public class SpeedFactor
+public class CameraSpeedFactor
 {
     [SerializeField] private AnimationCurve _factorCurve;
 

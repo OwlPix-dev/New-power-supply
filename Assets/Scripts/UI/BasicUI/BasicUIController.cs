@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BasicUIController : GameUI
+public class BasicUIController : UIState
 {
     [SerializeField] private UIDocument _uIDocument;
 

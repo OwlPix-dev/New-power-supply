@@ -152,11 +152,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uIDocument: {fileID: 0}
-  _buttonsContainerClassName: level-frame
-  _toLevelButtonClassName: to-level-button
-  _backButtonClassName: back-button
-  _toLevelButtonText: To Level
-  _backButtonText: Back
+  _buttonsContainerData:
+    _buttonsContainerClassName: content-container
+    _buttons:
+    - _buttonClassNames:
+      - to-level-button
+      _buttonText: To Level
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 859814345026701390}
+            m_TargetAssemblyTypeName: CameraPickLevel, Assembly-CSharp
+            m_MethodName: ToLevelButtonClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - _buttonClassNames:
+      - back-button
+      _buttonText: Back
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 859814345026701390}
+            m_TargetAssemblyTypeName: CameraPickLevel, Assembly-CSharp
+            m_MethodName: CloseUI
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
   _levelPhotoClassName: level-photo
   _levelNameClassName: level-name-text
   _levelDescripClassName: level-descrip-text
@@ -273,4 +307,6 @@ MonoBehaviour:
       m_RotationOrder: 4
     _factorDuration: 1.4
     _startDuration: 0.1
+  _minRestrictionPoint: {x: 0, y: 0, z: 0}
+  _maxRestrictionPoint: {x: 0, y: 0, z: 0}
   _speed: 10

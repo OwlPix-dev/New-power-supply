@@ -4,11 +4,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PhoneUIController : GameUI
+public class PhoneUIController : UIState
 {
     [SerializeField] private UIManager _uIManager;
 
     [SerializeField] private List<PhoneApp> _menuApps = new List<PhoneApp>();
+
+    [SerializeField] private OpenPhoneByKeyCode[] _opensPhone;
 
     [SerializeField] private GameObject _screensObject;
     [SerializeField] private PanelSettings _screenPanelSettings;
@@ -20,6 +22,8 @@ public class PhoneUIController : GameUI
     [SerializeField] private PhonePositionType[] _availablePhonePositions;
 
     private PhonePositionType _currentPhonePosition;
+
+    private List<NewScreen> _lastScreens = new List<NewScreen>();
 
     public UIManager UIManager => _uIManager;
 
@@ -33,6 +37,30 @@ public class PhoneUIController : GameUI
     public PhonePositionType CurrentPhonePosition => _currentPhonePosition;
 
     public bool IsPhoneOpen => _currentPhonePosition != null;
+
+    private void Update()
+    {
+        foreach (OpenPhoneByKeyCode openPhone in _opensPhone)
+        {
+            if (Input.GetKeyDown(openPhone.KeyCode))
+            {
+                _uIManager.BasicUIController.OpenUI(_uIManager);
+            }
+        }
+    }
+
+    public override void UpdatePassiveUI(UIManager uIManager)
+    {
+        base.UpdatePassiveUI(uIManager);
+
+        foreach (OpenPhoneByKeyCode openPhone in _opensPhone)
+        {
+            if (Input.GetKeyDown(openPhone.KeyCode))
+            {
+                OpenPhoneByScreens(openPhone.NewScreens);
+            }
+        }
+    }
 
     public override void StartUI(UIManager uIManager)
     {
@@ -49,24 +77,32 @@ public class PhoneUIController : GameUI
 
     public override void OpenUI(UIManager uIManager)
     {
-        base.OpenUI(uIManager);
+        if (IsPhoneOpen == true) { return; }
 
-        enabled = true;
+        base.OpenUI(uIManager);
     }
 
     public override void CloseUI(UIManager uIManager)
     {
+        if (IsPhoneOpen == false) { return; }
+
         base.CloseUI(uIManager);
 
-        ClosePhone();
+        SetPhoneFrame(false);
+
+        foreach (PhoneUIScreen currentPositionScreen in _currentPhonePosition.Screens)
+        {
+            currentPositionScreen.CloseScreen(this);
+        }
+
+        _currentPhonePosition = null;
     }
 
-    private void Update()
+    public override void ResumeUI(UIManager uIManager)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _uIManager.CurrentUI = _uIManager.BasicUIController;
-        }
+        base.ResumeUI(uIManager);
+
+        OpenPhoneByScreens(_lastScreens.ToArray());
     }
 
     public bool OpenPhoneByScreens(params NewScreen[] newScreens)
@@ -89,22 +125,6 @@ public class PhoneUIController : GameUI
         if (newPhonePosition.Screens.Length != newApps.Length) { return false; }
 
         return SetCurrentPhonePosition(newPhonePosition, newApps);
-    }
-
-    public void ClosePhone()
-    {
-        if (IsPhoneOpen == false) { return; }
-
-        SetPhoneFrame(false);
-
-        foreach (PhoneUIScreen currentPositionScreen in _currentPhonePosition.Screens)
-        {
-            currentPositionScreen.CloseScreen(this);
-        }
-
-        _currentPhonePosition = null;
-
-        enabled = false;
     }
 
     public bool SetScreenApp(NewScreen newScreen)
@@ -158,8 +178,7 @@ public class PhoneUIController : GameUI
 
         if (_currentPhonePosition == newPhonePosition) { return false; }
 
-        if (_uIManager.CurrentUI != this) { _uIManager.CurrentUI = this; }
-
+        OpenUI(_uIManager);
         SetPhoneFrame(true);
 
         foreach (PhonePositionSynchronization positionSynchronization in _phonePositionSynchronizations)
@@ -184,6 +203,16 @@ public class PhoneUIController : GameUI
         for (int screenIndex = 0; screenIndex < _currentPhonePosition.Screens.Length; screenIndex++)
         {
             _currentPhonePosition.Screens[screenIndex].OpenScreen(newApps[screenIndex], this);
+        }
+
+        if (_currentPhonePosition != null)
+        {
+            _lastScreens.Clear();
+            foreach (PhoneUIScreen screen in _currentPhonePosition.Screens)
+            {
+                Debug.Log(screen.CurrentApp);
+                _lastScreens.Add(new NewScreen(screen, screen.CurrentApp));
+            }
         }
 
         return true;

@@ -8,9 +8,11 @@
             <ui:VisualElement name="LevelPhoto" class="level-photo" />
             <ui:ScrollView name="LevelDescrip" class="level-descrip">
                 <ui:VisualElement name="LevelDescripFrame" class="level-descrip-farme">
-                    <ui:Label text="Descrip" name="LevelDescripText" class="level-descrip-text" />
+                    <ui:Label text="WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWRWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" name="LevelDescripText" class="level-descrip-text" />
                 </ui:VisualElement>
             </ui:ScrollView>
+            <ui:Button text="Back" class="back-button" />
+            <ui:Button text="To Level" class="to-level-button" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -54,17 +54,35 @@ public class PlayerInventory : InventorySystem
                     }
                 }
             }
-        }
 
-        if (newGridSize.y < oldGridSize.y)
-        {
-            for (int x = 0; x < newGridSize.x; x++)
+            if (newGridSize.y < oldGridSize.y)
             {
-                for (int y = newGridSize.y; y < oldGridSize.y; y++)
+                for (int x = 0; x < newGridSize.x; x++)
                 {
-                    if (occupancyGrid[x, y] == true)
+                    for (int y = newGridSize.y; y < oldGridSize.y; y++)
                     {
-                        return false;
+                        Debug.Log(new Vector2Int(x, y));
+                        if (occupancyGrid[x, y] == true)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (newGridSize.y < oldGridSize.y)
+            {
+                for (int x = 0; x < oldGridSize.x; x++)
+                {
+                    for (int y = newGridSize.y; y < oldGridSize.y; y++)
+                    {
+                        Debug.Log(new Vector2Int(x, y));
+                        if (occupancyGrid[x, y] == true)
+                        {
+                            return false;
+                        }
                     }
                 }
             }

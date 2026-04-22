@@ -1,0 +1,112 @@
+VisualElement {
+}
+
+.menu-frame {
+    position: absolute;
+    width: 1484px;
+    height: 800px;
+    border-top-width: 15px;
+    border-right-width: 15px;
+    border-bottom-width: 15px;
+    border-left-width: 15px;
+    border-left-color: rgb(20, 20, 20);
+    border-right-color: rgb(20, 20, 20);
+    border-top-color: rgb(20, 20, 20);
+    border-bottom-color: rgb(20, 20, 20);
+    background-color: rgb(64, 64, 64);
+    left: 218px;
+    top: 140px;
+}
+
+.menu-title {
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    background-color: rgb(147, 147, 147);
+    border-left-color: rgb(32, 32, 32);
+    border-right-color: rgb(32, 32, 32);
+    border-top-color: rgb(32, 32, 32);
+    border-bottom-color: rgb(32, 32, 32);
+    border-top-width: 15px;
+    border-right-width: 15px;
+    border-bottom-width: 15px;
+    border-left-width: 15px;
+    top: -87px;
+    left: 313px;
+    border-top-left-radius: 74px;
+    border-top-right-radius: 74px;
+    border-bottom-right-radius: 74px;
+    border-bottom-left-radius: 74px;
+    -unity-text-align: middle-center;
+    font-size: 87px;
+    -unity-font-style: bold;
+}
+
+.menu-service-buttons {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 120px;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 25px;
+}
+
+.menu-service-button {
+    width: 250px;
+    height: 150px;
+    margin-left: 50px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    font-size: 40px;
+    -unity-font-style: bold;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    background-color: rgb(159, 159, 159);
+}
+
+.menu-game-buttons {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 470px;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    padding-right: 25px;
+}
+
+.menu-game-button {
+    width: 250px;
+    height: 150px;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 50px;
+    margin-bottom: 0;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    font-size: 40px;
+    -unity-font-style: bold;
+    border-left-color: rgb(147, 147, 147);
+    border-right-color: rgb(147, 147, 147);
+    border-top-color: rgb(147, 147, 147);
+    border-bottom-color: rgb(147, 147, 147);
+    background-color: rgb(83, 207, 56);
+    color: rgb(147, 147, 147);
+}

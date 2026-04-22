@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 688c5c2ceed813541bf86b3c3d15272b, type: 2}
+  m_PanelSettings: {fileID: 11400000, guid: d955b7c76582176488d9fabcc2c789af, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: bae08debc55366b458751783957e7eea, type: 3}
   m_SortingOrder: 0
@@ -112,7 +112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uIManager: {fileID: 7465669618371767189}
-  _menuApps: []
+  _menuApps:
+  - {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+  _opensPhone:
+  - _keyCode: 9
+    _newScreens:
+    - _screen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+      _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
+    - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+      _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
   _screensObject: {fileID: 5659315388916139475}
   _screenPanelSettings: {fileID: 11400000, guid: ffd358bb3064561439d67cb5fb8affff, type: 2}
   _phoneFrameUIDocument: {fileID: 2912403845343565695}
@@ -204,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: ca24b953c0fae0a469163842b3cbf1e8, type: 2}
+  m_PanelSettings: {fileID: 11400000, guid: d955b7c76582176488d9fabcc2c789af, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 0}
   m_SortingOrder: 0
@@ -276,6 +284,296 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uIDocument: {fileID: 8541176060448196782}
+--- !u!1 &6803673175952001462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8073443918266101258}
+  - component: {fileID: 4504670333782619852}
+  - component: {fileID: 4854389695325369542}
+  m_Layer: 0
+  m_Name: Pause Menu UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8073443918266101258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803673175952001462}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6300620656147008509}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4504670333782619852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803673175952001462}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: d955b7c76582176488d9fabcc2c789af, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 70ce8b16d7e3ed64995331b60d6f08f8, type: 3}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!114 &4854389695325369542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803673175952001462}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c125a72810830e14da5fe578dee31d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uIManager: {fileID: 7465669618371767189}
+  _uIDocument: {fileID: 4504670333782619852}
+  _menuButtonsContainers:
+  - _buttonsContainerClassName: menu-service-buttons
+    _buttons:
+    - _buttonClassNames:
+      - menu-service-button
+      _buttonText: Resume
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: ResumeButtonClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: SetGamePause
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - _buttonClassNames:
+      - menu-service-button
+      _buttonText: Restart
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: RestartButtonClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: SetGamePause
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - _buttonClassNames:
+      - menu-service-button
+      _buttonText: Settings
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: SettingsButtonClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: SetGamePause
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - _buttonClassNames:
+      - menu-service-button
+      _buttonText: Menu
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: MenuButtonClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: SetGamePause
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+  - _buttonsContainerClassName: menu-game-buttons
+    _buttons:
+    - _buttonClassNames:
+      - menu-game-button
+      _buttonText: Inventory
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: InventoryButtonClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: SetGamePause
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - _buttonClassNames:
+      - menu-game-button
+      _buttonText: Shop
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: ShopButtonClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: SetGamePause
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - _buttonClassNames:
+      - menu-game-button
+      _buttonText: Levels
+      _onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: LevelsButtonClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4854389695325369542}
+            m_TargetAssemblyTypeName: PauseMenuUIController, Assembly-CSharp
+            m_MethodName: SetGamePause
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+  _mainMenuSceneName: Main menu
+  _levelsMenuSceneName: Level menu
+  _shopMenuSceneName: 
+  _phoneByInventoryButton:
+  - _screen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
+    _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
+  - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
+    _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+  _pauseKey: 27
 --- !u!1 &8658917577782863197
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +608,7 @@ Transform:
   - {fileID: 2466957542058182145}
   - {fileID: 6400846472587526988}
   - {fileID: 3432641483686038809}
+  - {fileID: 8073443918266101258}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7465669618371767189
@@ -327,16 +626,14 @@ MonoBehaviour:
   _playerManager: {fileID: 0}
   _mainUIController: {fileID: 2011371944184841193}
   _dragAndDropItems: {fileID: 6342799880210565833}
+  _pauseMenuUIController: {fileID: 4854389695325369542}
   _basicUIController: {fileID: 5081200429444612653}
   _phoneUIController: {fileID: 6206179109924940614}
+  _uIStates:
+  - {fileID: 5081200429444612653}
+  - {fileID: 6206179109924940614}
+  - {fileID: 4854389695325369542}
   _initialUI: {fileID: 5081200429444612653}
-  _opensPhone:
-  - _keyCode: 9
-    _newScreens:
-    - _screen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
-      _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
-    - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
-      _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
 --- !u!114 &6342799880210565833
 MonoBehaviour:
   m_ObjectHideFlags: 0

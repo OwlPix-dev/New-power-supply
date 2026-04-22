@@ -60,7 +60,7 @@ VisualElement {
     padding-top: 0;
     padding-bottom: 0;
     position: absolute;
-    top: 915px;
+    top: 865px;
     width: 200px;
     height: 100px;
     padding-right: 0;
@@ -69,7 +69,7 @@ VisualElement {
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
-    left: 305px;
+    left: 290px;
     font-size: 35px;
     border-top-width: 0;
     border-right-width: 0;
@@ -83,7 +83,7 @@ VisualElement {
     padding-top: 0;
     padding-bottom: 0;
     position: absolute;
-    top: 915px;
+    top: 865px;
     width: 200px;
     height: 100px;
     padding-right: 0;
@@ -92,7 +92,7 @@ VisualElement {
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
-    left: 45px;
+    left: 15px;
     border-top-width: 0;
     border-right-width: 0;
     border-bottom-width: 0;
