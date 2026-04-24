@@ -22,6 +22,8 @@ public class PlayerMove : CharacterMove
 
     public Vector3 PlayerMoveVector => _playerMoveVector;
 
+    public bool IsPlayerMove => _playerMoveVector != Vector3.zero;
+
     public override void Awake()
     {
         base.Awake();

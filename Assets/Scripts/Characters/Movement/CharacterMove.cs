@@ -3,9 +3,9 @@ using UnityEngine;
 public abstract class CharacterMove : MonoBehaviour
 {
     [SerializeField] private float _gravityForce = 9.8f;
-    [SerializeField] private float _pressingForce = 0.1f;
+    [SerializeField] private float _pressingForce = 0.002f;
 
-    private Vector3 _characterMveVector;
+    private Vector3 _characterMoveVector;
     private Vector3 _velocity;
 
     private CharacterMoveType _currentMoveType;
@@ -14,8 +14,8 @@ public abstract class CharacterMove : MonoBehaviour
 
     public Vector3 CharacterMoveVector
     {
-        get => _characterMveVector;
-        set => _characterMveVector = value;
+        get => _characterMoveVector;
+        set => _characterMoveVector = value;
     }
 
     public CharacterMoveType CurrentMoveType
@@ -37,7 +37,7 @@ public abstract class CharacterMove : MonoBehaviour
     {
         if (CharacterController.isGrounded == true)
         {
-            _velocity.y = -_pressingForce * Time.deltaTime;
+            _velocity.y = -_pressingForce;
         }
         else
         {

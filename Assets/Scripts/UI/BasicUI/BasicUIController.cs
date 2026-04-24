@@ -7,6 +7,11 @@ public class BasicUIController : UIState
 
     public UIDocument UIDocument => _uIDocument;
 
+    public override void StartUI(UIManager uIManager)
+    {
+        base.StartUI(uIManager);
+    }
+
     public override void OpenUI(UIManager uIManager)
     {
         _uIDocument.enabled = true;

@@ -69,3 +69,68 @@ VisualElement {
     border-left-width: 2px;
     position: absolute;
 }
+
+.interaction-object-context-menu {
+    position: absolute;
+    background-color: rgb(74, 74, 74);
+}
+
+.i-o-c-m-item {
+    background-color: rgb(136, 136, 136);
+    height: 80px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    flex-direction: row;
+}
+
+.i-o-c-m-item-name {
+    height: 80px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 48px;
+}
+
+.i-o-c-m-item-descrip {
+    height: 80px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 36px;
+    color: rgb(64, 64, 64);
+}
+
+.i-o-c-m-item-hot-key-name {
+    height: 80px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 36px;
+    color: rgb(64, 64, 64);
+    -unity-text-align: lower-left;
+}

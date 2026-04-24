@@ -16,7 +16,7 @@ public class CameraTracking : MonoBehaviour
         _transform = transform;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         Vector3 realyOffset = new Vector3(
             _offset.x * _transform.right.x + _offset.z * _transform.forward.x,

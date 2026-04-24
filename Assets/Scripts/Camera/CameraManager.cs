@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField] private PlayerManager _player;
+    [SerializeField] private Transform _cameraTransform;
 
     [Space]
 
-    [SerializeField] private Transform _cameraTransform;
+    [SerializeField] private PlayerManager _playerManager;
 
-    public PlayerManager Player => _player;
     public Transform CameraTransform => _cameraTransform;
+
+    public PlayerManager PlayerManager => _playerManager;
 }

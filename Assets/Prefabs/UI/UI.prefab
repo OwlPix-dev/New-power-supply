@@ -65,6 +65,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uIDocument: {fileID: 1400721098624558631}
+  _interactionObjectContextMenuClassName: interaction-object-context-menu
+  _interactionObjectMenuItemClassName: i-o-c-m-item
+  _interactionObjectMenuItemNameClassName: i-o-c-m-item-name
+  _interactionObjectMenuItemDescripClassName: i-o-c-m-item-descrip
+  _interactionObjectMenuItemHotKeyNameClassName: i-o-c-m-item-hot-key-name
 --- !u!1 &3119224718459146424
 GameObject:
   m_ObjectHideFlags: 0

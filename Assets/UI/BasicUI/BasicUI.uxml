@@ -11,4 +11,5 @@
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;" />
     </ui:VisualElement>
+    <ui:VisualElement name="InteractionObjectContextMenu" class="interaction-object-context-menu" style="visibility: hidden;" />
 </ui:UXML>
