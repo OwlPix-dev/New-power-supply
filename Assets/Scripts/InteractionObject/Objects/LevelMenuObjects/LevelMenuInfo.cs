@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LevelTransition : MonoBehaviour
+public class LevelMenuInfo : InteractionObjectMenuItem
 {
     [SerializeField] private Sprite _levelPhoto;
 
@@ -15,4 +15,9 @@ public class LevelTransition : MonoBehaviour
     public string LevelDescrip => _levelDescrip;
 
     public string SceneName => _sceneName;
+
+    public override void ItemActive(PlayerManager playerManager)
+    {
+        playerManager.UIManager.LevelMenuUIController.OpenLevelInfo(this);
+    }
 }

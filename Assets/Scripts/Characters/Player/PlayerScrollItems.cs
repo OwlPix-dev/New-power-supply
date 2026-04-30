@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -38,6 +39,8 @@ public class PlayerScrollItems : MonoBehaviour
             return _currentItemNumber <= 0 || _currentItemNumber > items.Length ? null : items[_currentItemNumber - 1];
         }
     }
+
+    public Action OnScrollItem;
 
     private void OnEnable()
     {
@@ -92,6 +95,8 @@ public class PlayerScrollItems : MonoBehaviour
         _currentItemNumber = newNumber > itemsLength ? 0 : newNumber < 0 ? itemsLength : newNumber;
 
         if (_isUIOpen == true) { RenderScrollItems(); }
+
+        OnScrollItem?.Invoke();
     }
 
     private void RenderScrollItems()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraMove : MonoBehaviour
+public class CameraRTSState : CameraState
 {
     [SerializeField] private CameraMoveKey[] _moveKeys;
 

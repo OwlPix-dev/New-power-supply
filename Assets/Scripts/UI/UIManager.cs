@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private PlayerManager _playerManager;
-
     [SerializeField] private MainUIController _mainUIController;
 
     [SerializeField] private DragAndDropItems _dragAndDropItems;
@@ -12,13 +10,22 @@ public class UIManager : MonoBehaviour
     [SerializeField] private BasicUIController _basicUIController;
     [SerializeField] private PhoneUIController _phoneUIController;
 
+    [Space]
+
+    [SerializeField] private LevelMenuUIController _levelMenuUIController;
+
+    [Space]
+
     [SerializeField] private UIState[] _uIStates;
     [SerializeField] private UIState _initialUI;
+
+    [Space]
+
+    [SerializeField] private PlayerManager _playerManager;
 
     private UIState _previousUI;
     private UIState _currentUI;
 
-    public PlayerManager PlayerManager => _playerManager;
 
     public MainUIController MainUIController => _mainUIController;
 
@@ -28,9 +35,13 @@ public class UIManager : MonoBehaviour
     public BasicUIController BasicUIController => _basicUIController;
     public PhoneUIController PhoneUIController => _phoneUIController;
 
+    public LevelMenuUIController LevelMenuUIController => _levelMenuUIController;
+
     public UIState[] UIStates => _uIStates;
 
     public UIState PreviousUI => _previousUI;
+
+    public PlayerManager PlayerManager => _playerManager;
 
     public UIState CurrentUI
     {

@@ -10,9 +10,11 @@ public class PlayerRotate : CharacterRotate
     {
         base.Update();
 
-        if (_playerManager.PlayerMove.PlayerMoveVector.sqrMagnitude > MinMoveSqrMagnitude)
+        Vector3 playerMoveVector = _playerManager.PlayerMovementState.PlayerMove.PlayerMoveVector;
+
+        if (playerMoveVector.sqrMagnitude > MinMoveSqrMagnitude)
         {
-            _lastDirection = _playerManager.PlayerMove.PlayerMoveVector;
+            _lastDirection = playerMoveVector;
         }
 
         if (_lastDirection.sqrMagnitude > MinMoveSqrMagnitude)

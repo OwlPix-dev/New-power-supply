@@ -9,14 +9,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private CapsuleCollider _capsuleCollider;
 
-    [SerializeField] private PlayerChangeCollider _changeCollider;
-    [SerializeField] private PlayerRotate _playerRotate;
-    [SerializeField] private PlayerMove _playerMove;
-
     [SerializeField] private PlayerInventory _playerInventory;
     [SerializeField] private PlayerScrollItems _playerScrollItems;
 
-    [SerializeField] private PlayerInteractionObject _playerInteractionObject;
+    [SerializeField] private PlayerStateMachine _playerStateMachine;
+
+    [SerializeField] private PlayerMovementState _playerMovementState;
+    [SerializeField] private PlayerIdleState _playerIdleState;
 
     [Space]
 
@@ -31,14 +30,13 @@ public class PlayerManager : MonoBehaviour
     public CharacterController CharacterController => _characterController;
     public CapsuleCollider CapsuleCollider => _capsuleCollider;
 
-    public PlayerChangeCollider ChangeCollider => _changeCollider;
-    public PlayerRotate PlayerRotate => _playerRotate;
-    public PlayerMove PlayerMove => _playerMove;
-
     public PlayerInventory PlayerInventory => _playerInventory;
     public PlayerScrollItems PlayerScrollItems => _playerScrollItems;
 
-    public PlayerInteractionObject PlayerInteractionObject => _playerInteractionObject;
+    public PlayerStateMachine PlayerStateMachine => _playerStateMachine;
+
+    public PlayerMovementState PlayerMovementState => _playerMovementState;
+    public PlayerIdleState PlayerIdleState => _playerIdleState;
 
     public CameraManager CameraManager => _cameraManager;
 

@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/MainUI/MainUI.uss?fileID=7433441132597879392&amp;guid=a25c73082e535474d8746ea5e9934611&amp;type=3#MainUI" />
     <ui:VisualElement name="DragTitle" class="item-drag-title" />
+    <ui:VisualElement name="ItemContexMenu" class="interaction-object-context-menu" />
 </ui:UXML>

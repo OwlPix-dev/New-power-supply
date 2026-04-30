@@ -12,10 +12,12 @@ GameObject:
   - component: {fileID: 5300829969139416516}
   - component: {fileID: 3098711214567447054}
   - component: {fileID: 6787630587833792145}
-  - component: {fileID: 859814345026701390}
+  - component: {fileID: 6020538791222762263}
+  - component: {fileID: 7391745313894419303}
   - component: {fileID: 3094769751869432640}
+  - component: {fileID: 3330423837368263675}
   m_Layer: 0
-  m_Name: Camera control
+  m_Name: Camera RTS
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +141,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &859814345026701390
+--- !u!114 &6020538791222762263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,54 +150,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 9190644393131782363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb0c19e7fb862145a50542e0525fd6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b785cd9c5c7c984f86d6303a19c1b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uIDocument: {fileID: 0}
-  _buttonsContainerData:
-    _buttonsContainerClassName: content-container
-    _buttons:
-    - _buttonClassNames:
-      - to-level-button
-      _buttonText: To Level
-      _onClick:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 859814345026701390}
-            m_TargetAssemblyTypeName: CameraPickLevel, Assembly-CSharp
-            m_MethodName: ToLevelButtonClick
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    - _buttonClassNames:
-      - back-button
-      _buttonText: Back
-      _onClick:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 859814345026701390}
-            m_TargetAssemblyTypeName: CameraPickLevel, Assembly-CSharp
-            m_MethodName: CloseUI
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-  _levelPhotoClassName: level-photo
-  _levelNameClassName: level-name-text
-  _levelDescripClassName: level-descrip-text
-  _mouseIndex: 0
-  _rayMaxDistance: 100
+  _cameraTransform: {fileID: 177489226809123707}
+  _cameraInteractionObject: {fileID: 3330423837368263675}
+  _cameraStateMachine: {fileID: 7391745313894419303}
+  _cameraIdleState: {fileID: 0}
+  _cameraFreeLookState: {fileID: 0}
+  _cameraReviewObjectState: {fileID: 0}
+  _cameraRTSState: {fileID: 3094769751869432640}
+  _playerManager: {fileID: 0}
+--- !u!114 &7391745313894419303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190644393131782363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee5f4ee2adb8d245aa6b3d7f8cfefd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _states:
+  - {fileID: 3094769751869432640}
+  _initialState: {fileID: 3094769751869432640}
 --- !u!114 &3094769751869432640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,3 +290,29 @@ MonoBehaviour:
   _minRestrictionPoint: {x: 0, y: 0, z: 0}
   _maxRestrictionPoint: {x: 0, y: 0, z: 0}
   _speed: 10
+--- !u!114 &3330423837368263675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190644393131782363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54171d94f178e274fa1aacafc6c5a285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraManager: {fileID: 6020538791222762263}
+  _isPlayerCheck: 0
+  _contextMenuClassName: interaction-object-context-menu
+  _menuItemClassName: i-o-c-m-item
+  _menuItemNameClassName: i-o-c-m-item-name
+  _menuItemDescripClassName: i-o-c-m-item-descrip
+  _menuItemHotKeyNameClassName: i-o-c-m-item-hot-key-name
+  _openContextMenuMouseIndex: 1
+  _closeContextMenuMouseIndices: 000000000100000002000000
+  _rayMaxDistance: 100
+  _ignoreMask:
+    serializedVersion: 2
+    m_Bits: 68
+  _availableInteractionObjects: []

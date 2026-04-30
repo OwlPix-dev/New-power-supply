@@ -50,7 +50,7 @@ public class PlayerMove : CharacterMove
                     newMoveType = additionalMoveType.MoveType;
                 }
 
-                bool isChangeCollider = _playerManager.ChangeCollider.ChangeCollider(
+                bool isChangeCollider = _playerManager.PlayerMovementState.PlayerChangeCollider.ChangeCollider(
                     newMoveType.ColliderRadius,
                     newMoveType.ColliderHeight,
                     newMoveType.ColliderCenter);
