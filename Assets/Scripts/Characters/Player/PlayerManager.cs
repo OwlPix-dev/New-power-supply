@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerMovementState _playerMovementState;
     [SerializeField] private PlayerIdleState _playerIdleState;
 
+    [SerializeField] private string _playerInventoriesDataTag = "PlayerInventoriesData";
+
     [Space]
 
     [SerializeField] private CameraManager _cameraManager;
@@ -37,6 +39,8 @@ public class PlayerManager : MonoBehaviour
 
     public PlayerMovementState PlayerMovementState => _playerMovementState;
     public PlayerIdleState PlayerIdleState => _playerIdleState;
+
+    public string PlayerInventoriesDataTag => _playerInventoriesDataTag;
 
     public CameraManager CameraManager => _cameraManager;
 

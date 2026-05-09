@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerInventory : InventorySystem
+public class PlayerInventory : InventoryPhoneAppUI
 {
     [SerializeField] private PlayerManager _playerManager;
 
@@ -12,18 +9,42 @@ public class PlayerInventory : InventorySystem
 
     [SerializeField] private string _backpackClassName;
 
-    [SerializeField] private Item _debugItem;
-
-    [SerializeField] private Vector2Int _debugAddItemPosition;
-    [SerializeField] private Vector2Int _debugRemoveItemPosition;
-
     [SerializeField] private Backpack _debugBackpack;
 
     private Backpack _currentBackpack;
 
-    private List<PhoneUIScreen> _appScreens = new List<PhoneUIScreen>();
+    private PlayerInventoriesData _playerInventoriesData;
 
-    public bool IsInventoryOpen => _appScreens.Count > 0;
+    public override void Start()
+    {
+        GameObject playerInventoriesDataObject = GameObject.FindWithTag(_playerManager.PlayerInventoriesDataTag);
+        if (playerInventoriesDataObject != null)
+        {
+            _playerInventoriesData = playerInventoriesDataObject.GetComponent<PlayerInventoriesData>();
+
+            _currentBackpack = _playerInventoriesData.CurrentLevelSettings.CurrentBackpack;
+
+            if (_playerInventoriesData.CurrentLevelSettings.LevelInventoryGrid.Count == 0)
+            {
+                base.Start();
+                return;
+            }
+
+            CalculateGrid(InventoryGrid, new Vector2Int(_playerInventoriesData.CurrentLevelSettings.LevelInventoryGrid.Count, _playerInventoriesData.CurrentLevelSettings.LevelInventoryGrid[0].Count));
+
+            for (int x = 0; x < _playerInventoriesData.CurrentLevelSettings.LevelInventoryGrid.Count; x++)
+            {
+                for (int y = 0; y < _playerInventoriesData.CurrentLevelSettings.LevelInventoryGrid[x].Count; y++)
+                {
+                    PlaceItem(_playerInventoriesData.CurrentLevelSettings.LevelInventoryGrid[x][y], new Vector2Int(x, y), IsInventoryOpen, _playerManager);
+                }
+            }
+        }
+        else
+        {
+            base.Start();
+        }
+    }
 
     private void Update()
     {
@@ -61,7 +82,6 @@ public class PlayerInventory : InventorySystem
                 {
                     for (int y = newGridSize.y; y < oldGridSize.y; y++)
                     {
-                        Debug.Log(new Vector2Int(x, y));
                         if (occupancyGrid[x, y] == true)
                         {
                             return false;
@@ -78,7 +98,6 @@ public class PlayerInventory : InventorySystem
                 {
                     for (int y = newGridSize.y; y < oldGridSize.y; y++)
                     {
-                        Debug.Log(new Vector2Int(x, y));
                         if (occupancyGrid[x, y] == true)
                         {
                             return false;
@@ -89,154 +108,39 @@ public class PlayerInventory : InventorySystem
         }
 
         _currentBackpack = backpack;
+        _playerInventoriesData.CurrentLevelSettings.CurrentBackpack = _currentBackpack;
 
-        CalculateInventoryGrid(isInventoryRender: IsInventoryOpen);
+        CalculateInventoryGrid(_playerManager, isInventoryRender: IsInventoryOpen);
 
         return true;
     }
 
-
-    public void AddInventoryScreen(PhoneUIScreen newScreen)
+    public override void CalculateInventoryGrid(PlayerManager playerManager, bool isInventoryRender = false)
     {
-        _appScreens.Add(newScreen);
+        base.CalculateInventoryGrid(playerManager, isInventoryRender);
 
-        if (_appScreens.Count == 1)
-        {
-            _playerManager.UIManager.DragAndDropItems.DragAndDropData.Add(new DragAndDropData(this));
-        }
-
-        GetNecessaryDragAndDropData().ItemsGrids.Add(new List<List<VisualElement>>());
-        GetNecessaryDragAndDropData().ItemPlacesGrids.Add(new List<List<VisualElement>>());
-
-        DebugButtons(newScreen.AppUIDocument);
-
-        InventoryRender();
+        CalculateGrid(_playerInventoriesData.CurrentLevelSettings.LevelInventoryGrid, GetInventoryGridSize());
     }
 
-    public void RemoveInventoryScreen(PhoneUIScreen removeScreen)
+    public override void PlaceItem(Item item, Vector2Int itemPosition, bool isInventoryRender, PlayerManager playerManager)
     {
-        int removeScreenIndex = _appScreens.IndexOf(removeScreen);
+        base.PlaceItem(item, itemPosition, isInventoryRender, playerManager);
 
-        if (removeScreenIndex == -1) { return; }
-
-        _appScreens.RemoveAt(removeScreenIndex);
-
-        GetNecessaryDragAndDropData().ItemsGrids.RemoveAt(removeScreenIndex);
-        GetNecessaryDragAndDropData().ItemPlacesGrids.RemoveAt(removeScreenIndex);
-
-        if (IsInventoryOpen == false)
-        {
-            _playerManager.UIManager.DragAndDropItems.DragAndDropData.Remove(GetNecessaryDragAndDropData());
-        }
+        _playerInventoriesData.CurrentLevelSettings.LevelInventoryGrid[itemPosition.x][itemPosition.y] = item;
     }
 
-    private DragAndDropData GetNecessaryDragAndDropData()
+    public override void RenderAppScreen(PhoneUIScreen appScreen, PlayerManager playerManager)
     {
-        return _playerManager.UIManager.DragAndDropItems.DragAndDropData.FirstOrDefault(data => data.InventorySystem == this);
-    }
+        base.RenderAppScreen(appScreen, playerManager);
 
-    public override void CalculateInventoryGrid(bool isInventoryRender = false)
-    {
-        base.CalculateInventoryGrid(isInventoryRender);
-    }
+        VisualElement root = appScreen.AppUIDocument.rootVisualElement;
+        VisualElement backpackTitle = root.Q<VisualElement>(className: _backpackClassName);
 
-    private void CalculateDragAndDropGrids(bool isInventoryRender = false)
-    {
-        DragAndDropData necessaryDragAndDropData = GetNecessaryDragAndDropData();
-
-        if (necessaryDragAndDropData == null) { return; }
-
-        Vector2Int maxAxis = InventoryGridMaxAxis;
-
-        foreach (List<List<VisualElement>> itemsGrid in necessaryDragAndDropData.ItemsGrids)
-        {
-            CalculateGrid(itemsGrid, maxAxis);
-        }
-
-        foreach (List<List<VisualElement>> itemPlacesGrid in necessaryDragAndDropData.ItemPlacesGrids)
-        {
-            CalculateGrid(itemPlacesGrid, maxAxis);
-        }
-
-        for (int appIndex = 0; appIndex < _appScreens.Count; appIndex++)
-        {
-            VisualElement root = _appScreens[appIndex].AppUIDocument.rootVisualElement;
-            VisualElement contentContainer = root.Q<VisualElement>(className: ContentContainerClassName);
-            VisualElement backpackTitle = root.Q<VisualElement>(className: _backpackClassName);
-
-            backpackTitle.style.backgroundImage = _currentBackpack == null ? new StyleBackground() : new StyleBackground(_currentBackpack.Icon);
-
-            VisualElement[] slots = GetContents(contentContainer, ContentSlot.ContentClassName);
-            VisualElement[] items = GetContents(contentContainer, ContentItem.ContentClassName);
-
-            Array.Reverse(slots);
-            Array.Reverse(items);
-
-            int slotIndex = 0;
-            int itemIndex = 0;
-
-            for (int x = 0; x < maxAxis.x; x++)
-            {
-                for (int y = 0; y < maxAxis.y; y++)
-                {
-                    necessaryDragAndDropData.ItemPlacesGrids[appIndex][x][y] = slots[slotIndex];
-                    slotIndex++;
-
-                    if (InventoryGrid[x][y] == null)
-                    {
-                        necessaryDragAndDropData.ItemsGrids[appIndex][x][y] = null;
-                    }
-                    else
-                    {
-                        necessaryDragAndDropData.ItemsGrids[appIndex][x][y] = items[itemIndex];
-                        itemIndex++;
-                    }
-                }
-            }
-        }
-
-        if (isInventoryRender == true) { InventoryRender(); }
+        backpackTitle.style.backgroundImage = new StyleBackground(_currentBackpack?.Icon);
     }
 
     public override Vector2Int GetInventoryGridSize()
     {
         return _currentBackpack == null ? _defaultInventorySize : _currentBackpack.Size;
-    }
-
-    public override void InventoryRender()
-    {
-        foreach (PhoneUIScreen appScreen in _appScreens)
-        {
-            RenderInventoryUI(appScreen.AppUIDocument, isFixedY: false);
-        }
-
-        CalculateDragAndDropGrids();
-    }
-
-    public void DebugButtons(UIDocument uIDocument)
-    {
-        VisualElement root = uIDocument.rootVisualElement;
-
-        VisualElement container = root.Q<VisualElement>("Title");
-
-        Button addButton = new Button();
-        addButton.AddToClassList("add-button");
-
-        addButton.clicked += () =>
-        {
-            AddItemByPosition(_debugItem, _debugAddItemPosition, isInventoryRender: IsInventoryOpen);
-        };
-
-        container.Add(addButton);
-
-        Button removeButton = new Button();
-        removeButton.AddToClassList("remove-button");
-
-        removeButton.clicked += () =>
-        {
-            RemoveItemByPosition(_debugRemoveItemPosition, isInventoryRender: IsInventoryOpen);
-        };
-
-        container.Add(removeButton);
     }
 }

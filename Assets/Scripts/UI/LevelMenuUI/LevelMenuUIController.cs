@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -14,7 +15,7 @@ public class LevelMenuUIController : MonoBehaviour
 
     [SerializeField] private int[] _closeLevelInfoMouseIndices = new int[3] { 0, 1, 2 };
 
-    private LevelMenuInfo _currentLevelInfo;
+    private LevelMenuInfoActive _currentLevelInfo;
 
     private void Update()
     {
@@ -35,10 +36,12 @@ public class LevelMenuUIController : MonoBehaviour
         }
     }
 
-    public void OpenLevelInfo(LevelMenuInfo levelInfo)
+    public void OpenLevelInfo(LevelMenuInfoActive levelInfo)
     {
         _uIDocument.enabled = true;
         _currentLevelInfo = levelInfo;
+
+        SceneTransitionObject sceneTransition = levelInfo.MainObject as SceneTransitionObject;
 
         VisualElement root = _uIDocument.rootVisualElement;
 
@@ -47,10 +50,10 @@ public class LevelMenuUIController : MonoBehaviour
         Label levelName = root.Q<Label>(className: _levelNameClassName);
         Label levelDescrip = root.Q<Label>(className: _levelDescripClassName);
 
-        levelPhoto.style.backgroundImage = new StyleBackground(_currentLevelInfo.LevelPhoto);
+        levelPhoto.style.backgroundImage = new StyleBackground(sceneTransition.SceneSettings.ScenePhoto);
 
-        levelName.text = _currentLevelInfo.LevelName;
-        levelDescrip.text = _currentLevelInfo.LevelDescrip;
+        levelName.text = sceneTransition.SceneSettings.SceneTitle;
+        levelDescrip.text = sceneTransition.SceneSettings.SceneDescrip;
 
         _buttonsContainerData.DrawButtons(root);
     }
@@ -63,6 +66,8 @@ public class LevelMenuUIController : MonoBehaviour
 
     public void ToLevelButtonClick()
     {
-        SceneManager.LoadScene(_currentLevelInfo.SceneName);
+        LevelMenuTransitionActive levelTransition = _currentLevelInfo.MainObject.MenuItems.
+            FirstOrDefault(item => item is LevelMenuTransitionActive) as LevelMenuTransitionActive;
+        levelTransition.TransitionLevel();
     }
 }

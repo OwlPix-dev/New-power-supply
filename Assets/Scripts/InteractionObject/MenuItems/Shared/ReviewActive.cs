@@ -2,7 +2,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ReviewObject : InteractionObjectMenuItem
+public class ReviewActive : InteractionObjectActive
 {
     [SerializeField] private InteractionObject[] _childInteractionObjects;
 
@@ -10,9 +10,11 @@ public class ReviewObject : InteractionObjectMenuItem
 
     public Transform ReviewPoint => _reviewPoint;
 
-    public override void ItemActive(PlayerManager playerManager)
+    public override bool Active(PlayerManager playerManager)
     {
         Review(playerManager);
+
+        return true;
     }
 
     public virtual void Review(PlayerManager playerManager)

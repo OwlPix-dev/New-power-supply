@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CameraRotate : MonoBehaviour
 {
+    [SerializeField] private CameraManager _cameraManager;
+
     [SerializeField] private CameraTighten[] _cameraTightens;
 
     [SerializeField] private float _sensitivity = 100f;
@@ -17,8 +19,6 @@ public class CameraRotate : MonoBehaviour
     private Vector2? _startMousePosition;
     private Vector2 _lastMousePosition;
 
-    private Transform _transform;
-
     public Vector3 CameraAngle => _cameraAngle;
 
     public Vector3? TightenVector
@@ -28,11 +28,6 @@ public class CameraRotate : MonoBehaviour
     }
 
     private bool _isDragging => _startMousePosition != null;
-
-    private void Awake()
-    {
-        _transform = transform;
-    }
 
     private void Update()
     {
@@ -48,7 +43,7 @@ public class CameraRotate : MonoBehaviour
             float mouseDistance = Input.mousePosition.x - _lastMousePosition.x;
             _lastMousePosition = Input.mousePosition;
 
-            _transform.Rotate(new Vector3(0, mouseDistance / Screen.width * _sensitivity, 0), Space.World);
+            _cameraManager.CameraTransform.Rotate(new Vector3(0, mouseDistance / Screen.width * _sensitivity, 0), Space.World);
         }
 
         if (Input.GetMouseButtonUp(_mouseRotateIndex) && _isDragging == true)
@@ -57,34 +52,34 @@ public class CameraRotate : MonoBehaviour
 
             foreach (CameraTighten cameraTighten in _cameraTightens)
             {
-                bool isAngleLarger = _transform.eulerAngles.y >= cameraTighten.TightenRange.x;
-                bool isAngleLess = _transform.eulerAngles.y < cameraTighten.TightenRange.y;
+                bool isAngleLarger = _cameraManager.CameraTransform.eulerAngles.y >= cameraTighten.TightenRange.x;
+                bool isAngleLess = _cameraManager.CameraTransform.eulerAngles.y < cameraTighten.TightenRange.y;
 
                 if (isAngleLarger && isAngleLess)
                 {
                     _tightenVector = new Vector3(
-                        _transform.eulerAngles.x,
+                        _cameraManager.CameraTransform.eulerAngles.x,
                         cameraTighten.TightenAngle,
-                        _transform.eulerAngles.z);
+                        _cameraManager.CameraTransform.eulerAngles.z);
                 }
             }
         }
 
         if (_tightenVector != null)
         {
-            if ((_transform.eulerAngles - _tightenVector.Value).sqrMagnitude > _minDistance)
+            if ((_cameraManager.CameraTransform.eulerAngles - _tightenVector.Value).sqrMagnitude > _minDistance)
             {
-                _transform.eulerAngles = Vector3.Lerp(
-                    _transform.eulerAngles,
+                _cameraManager.CameraTransform.eulerAngles = Vector3.Lerp(
+                    _cameraManager.CameraTransform.eulerAngles,
                     _tightenVector.Value,
                     _tightenTime);
             }
             else
             {
-                _transform.eulerAngles = new Vector3(
+                _cameraManager.CameraTransform.eulerAngles = new Vector3(
                     _cameraAngle.x,
                     _tightenVector.Value.y,
-                    _transform.eulerAngles.z);
+                    _cameraManager.CameraTransform.eulerAngles.z);
                 _tightenVector = null;
             }
         }

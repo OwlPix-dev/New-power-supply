@@ -18,7 +18,7 @@ public abstract class CharacterChangeCollider : MonoBehaviour
         _transform = transform;
     }
 
-    public bool ChangeCollider(float radius, float height, Vector3 center)
+    public bool ChangeCollider(float radius, float height, float stepOffset, Vector3 center)
     {
         Vector3 bottom = _transform.position + Vector3.up * radius;
         Vector3 top = bottom + Vector3.up * (height - radius * 2);
@@ -29,7 +29,7 @@ public abstract class CharacterChangeCollider : MonoBehaviour
 
         if (isCanChangeCollider == true)
         {
-            SetCharacterControllerParameters(radius, height, center);
+            SetCharacterControllerParameters(radius, height, stepOffset, center);
 
             SetCapsuleColliderParameters(radius, height, center);
         }
@@ -37,10 +37,11 @@ public abstract class CharacterChangeCollider : MonoBehaviour
         return isCanChangeCollider;
     }
 
-    private void SetCharacterControllerParameters(float radius, float height, Vector3 center)
+    private void SetCharacterControllerParameters(float radius, float height, float stepOffset, Vector3 center)
     {
         _characterController.radius = radius;
         _characterController.height = height;
+        _characterController.stepOffset = stepOffset;
         _characterController.center = center;
     }
 

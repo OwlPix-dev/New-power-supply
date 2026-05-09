@@ -8,6 +8,8 @@ public class DragAndDropItems : MonoBehaviour
 
     [SerializeField] private string _dragTitleClassName;
 
+    [SerializeField] private int _dragMouseIndex;
+
     private List<DragAndDropData> _dragAndDropData = new List<DragAndDropData>();
 
     private InventorySystem _currentInventory;
@@ -37,13 +39,13 @@ public class DragAndDropItems : MonoBehaviour
 
         if (IsDrag == true)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(_dragMouseIndex))
             {
                 _dragTitle.style.left = mousePosition.x;
                 _dragTitle.style.top = mousePosition.y;
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(_dragMouseIndex))
             {
                 foreach (DragAndDropData dragAndDropData in _dragAndDropData)
                 {
@@ -59,7 +61,7 @@ public class DragAndDropItems : MonoBehaviour
 
                                 if (itemPlace != null && itemPlace.worldBound.Contains(mousePosition))
                                 {
-                                    if (_currentInventory.PutItem(_dragItem, new Vector2Int(x, y)) == false)
+                                    if (dragAndDropData.InventorySystem.PutItem(_dragItem, new Vector2Int(x, y), _uIManager.PlayerManager, _currentInventory) == false)
                                     {
                                         CancelDrag();
 
@@ -81,7 +83,7 @@ public class DragAndDropItems : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(_dragMouseIndex))
         {
             foreach (DragAndDropData dragAndDropData in _dragAndDropData)
             {
@@ -107,7 +109,7 @@ public class DragAndDropItems : MonoBehaviour
 
                                 _dragTitle.style.backgroundImage = item.resolvedStyle.backgroundImage;
 
-                                _currentInventory.PickItem(itemDragPosition);
+                                _currentInventory.PickItem(itemDragPosition, _uIManager.PlayerManager);
 
                                 return;
                             }
@@ -130,7 +132,7 @@ public class DragAndDropItems : MonoBehaviour
 
     private void CancelDrag()
     {
-        _currentInventory.LoseItem(_dragItem, _dragItemBackPosition.Value);
+        _currentInventory.LoseItem(_dragItem, _dragItemBackPosition.Value, _uIManager.PlayerManager);
 
         SetDragState(null, null, null, Visibility.Hidden);
     }

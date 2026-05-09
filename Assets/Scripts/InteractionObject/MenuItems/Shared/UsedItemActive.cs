@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class UsedObject : InteractionObjectMenuItem
+public abstract class UsedItemActive : InteractionObjectActive
 {
     [SerializeField] private int _menuItemDescripIndex = 1;
 

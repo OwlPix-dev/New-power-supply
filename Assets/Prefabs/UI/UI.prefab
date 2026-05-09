@@ -65,11 +65,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uIDocument: {fileID: 1400721098624558631}
-  _interactionObjectContextMenuClassName: interaction-object-context-menu
-  _interactionObjectMenuItemClassName: i-o-c-m-item
-  _interactionObjectMenuItemNameClassName: i-o-c-m-item-name
-  _interactionObjectMenuItemDescripClassName: i-o-c-m-item-descrip
-  _interactionObjectMenuItemHotKeyNameClassName: i-o-c-m-item-hot-key-name
 --- !u!1 &3119224718459146424
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +97,7 @@ Transform:
   m_Children:
   - {fileID: 8028106093696131893}
   - {fileID: 2008828082045688711}
+  - {fileID: 5149683689589678673}
   m_Father: {fileID: 6300620656147008509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6206179109924940614
@@ -117,15 +113,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uIManager: {fileID: 7465669618371767189}
-  _menuApps:
-  - {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
   _opensPhone:
   - _keyCode: 9
     _newScreens:
     - _screen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
-      _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
+      _app: {fileID: 5282389088201255279}
     - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
-      _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+      _app: {fileID: 5282389088201255279}
+  _defaultApp: {fileID: 5282389088201255279}
+  _menuApp: {fileID: 5282389088201255279}
   _screensObject: {fileID: 5659315388916139475}
   _screenPanelSettings: {fileID: 11400000, guid: ffd358bb3064561439d67cb5fb8affff, type: 2}
   _phoneFrameUIDocument: {fileID: 2912403845343565695}
@@ -572,12 +568,12 @@ MonoBehaviour:
             m_CallState: 2
   _mainMenuSceneName: Main menu
   _levelsMenuSceneName: Level menu
-  _shopMenuSceneName: 
+  _shopMenuSceneName: Shop menu
   _phoneByInventoryButton:
   - _screen: {fileID: 11400000, guid: 36e6278de1bb1774aae1b51fff941fb2, type: 2}
-    _app: {fileID: 11400000, guid: 5f85ec52a37fbd4439dc2825dfecfa2a, type: 2}
+    _app: {fileID: 5282389088201255279}
   - _screen: {fileID: 11400000, guid: 103dfa8c389de3b4c9d2104509237a15, type: 2}
-    _app: {fileID: 11400000, guid: af89d52775457834d84fc1c81963fad8, type: 2}
+    _app: {fileID: 2401271730361380413}
   _pauseKey: 27
 --- !u!1 &8658917577782863197
 GameObject:
@@ -628,17 +624,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db442d0e78b9a614780eef4f5782f875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerManager: {fileID: 0}
   _mainUIController: {fileID: 2011371944184841193}
   _dragAndDropItems: {fileID: 6342799880210565833}
   _pauseMenuUIController: {fileID: 4854389695325369542}
   _basicUIController: {fileID: 5081200429444612653}
   _phoneUIController: {fileID: 6206179109924940614}
+  _levelMenuUIController: {fileID: 0}
   _uIStates:
   - {fileID: 5081200429444612653}
   - {fileID: 6206179109924940614}
   - {fileID: 4854389695325369542}
   _initialUI: {fileID: 5081200429444612653}
+  _playerManager: {fileID: 0}
 --- !u!114 &6342799880210565833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,3 +650,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uIManager: {fileID: 7465669618371767189}
   _dragTitleClassName: item-drag-title
+  _dragMouseIndex: 0
+--- !u!1 &9162332485312478029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5149683689589678673}
+  - component: {fileID: 5282389088201255279}
+  - component: {fileID: 2401271730361380413}
+  m_Layer: 0
+  m_Name: Apps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5149683689589678673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162332485312478029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3432641483686038809}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5282389088201255279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162332485312478029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98be5c03d80c7374187813369aaa47dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _appUI: {fileID: 9197481963319205126, guid: 1fe90544befbb164e9cfaf177ed7c5ff, type: 3}
+  _appName: Menu
+  _appIcon: {fileID: 0}
+  _phoneController: {fileID: 6206179109924940614}
+  _systemicAppsContainerClassName: systemic-apps
+  _externalAppsContainerClassName: external-apps
+  _menuAppContainerClassName: app-container
+  _menuAppIconClassName: app-icon
+  _menuAppNameClassName: app-name
+  _systemicApps:
+  - {fileID: 2401271730361380413}
+  - {fileID: 2401271730361380413}
+  - {fileID: 2401271730361380413}
+  - {fileID: 2401271730361380413}
+  - {fileID: 2401271730361380413}
+  - {fileID: 2401271730361380413}
+  - {fileID: 2401271730361380413}
+--- !u!114 &2401271730361380413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162332485312478029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0faa550d9b1fec47b79307a4af18bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _appUI: {fileID: 9197481963319205126, guid: 71104424d9f3c724fa6c20a2364e3532, type: 3}
+  _appName: Inventory
+  _appIcon: {fileID: -1944405216, guid: bbac19ed935549245a85880f65e23675, type: 3}
+  _phoneController: {fileID: 6206179109924940614}

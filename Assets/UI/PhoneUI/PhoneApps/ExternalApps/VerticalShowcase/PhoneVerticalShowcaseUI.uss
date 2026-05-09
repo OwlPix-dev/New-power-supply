@@ -1,0 +1,28 @@
+VisualElement {
+}
+
+.showcase-frame {
+}
+
+.showcase-shelf-top {
+}
+
+.showcase-shelf-bottom {
+}
+
+.showcase-slot {
+    background-color: rgb(186, 92, 0);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-left-color: rgb(136, 67, 0);
+    border-right-color: rgb(136, 67, 0);
+    border-top-color: rgb(136, 67, 0);
+    border-bottom-color: rgb(136, 67, 0);
+    position: absolute;
+}
+
+.showcase-item {
+    position: absolute;
+}

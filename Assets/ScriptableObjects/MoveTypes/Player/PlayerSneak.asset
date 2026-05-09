@@ -17,4 +17,5 @@ MonoBehaviour:
   _brakingSpeed: 3
   _colliderRadius: 0.35
   _colliderHeight: 1.35
+  _stepOffset: 0.3
   _colliderCenter: {x: 0, y: 0.675, z: 0}

@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "PhonePlayerInventory", menuName = "Phone/PhoneApp/PhonePlayerInventory")]
-public class PhonePlayerInventory : PhoneApp
+public class PhoneShowcase : ExternalApp
 {
+    [SerializeField] private ShowcaseShelf[] _showcaseShelves;
+
     public override void OpenApp(PhoneUIScreen appScreen, PhoneUIController phoneController)
     {
         base.OpenApp(appScreen, phoneController);
@@ -12,7 +13,11 @@ public class PhonePlayerInventory : PhoneApp
 
         void RegisterUI(GeometryChangedEvent evt)
         {
-            PhoneController.UIManager.PlayerManager.PlayerInventory.AddInventoryScreen(appScreen);
+            foreach (ShowcaseShelf showcaseShelf in _showcaseShelves)
+            {
+                PlayerManager playerManager = phoneController.UIManager.PlayerManager;
+                showcaseShelf.AddInventoryScreen(appScreen, playerManager);
+            }
 
             root.UnregisterCallback<GeometryChangedEvent>(RegisterUI);
         }
@@ -24,6 +29,10 @@ public class PhonePlayerInventory : PhoneApp
     {
         base.CloseApp(appScreen, phoneController);
 
-        phoneController.UIManager.PlayerManager.PlayerInventory.RemoveInventoryScreen(appScreen);
+        foreach (ShowcaseShelf showcaseShelf in _showcaseShelves)
+        {
+            PlayerManager playerManager = phoneController.UIManager.PlayerManager;
+            showcaseShelf.RemoveInventoryScreen(appScreen, playerManager);
+        }
     }
 }

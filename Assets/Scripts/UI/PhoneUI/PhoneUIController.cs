@@ -8,9 +8,10 @@ public class PhoneUIController : UIState
 {
     [SerializeField] private UIManager _uIManager;
 
-    [SerializeField] private List<PhoneApp> _menuApps = new List<PhoneApp>();
-
     [SerializeField] private OpenPhoneByKeyCode[] _opensPhone;
+
+    [SerializeField] private PhoneApp _defaultApp;
+    [SerializeField] private PhoneMenu _menuApp;
 
     [SerializeField] private GameObject _screensObject;
     [SerializeField] private PanelSettings _screenPanelSettings;
@@ -27,7 +28,8 @@ public class PhoneUIController : UIState
 
     public UIManager UIManager => _uIManager;
 
-    public List<PhoneApp> MenuApps => _menuApps;
+    public PhoneApp DefaultApp => _defaultApp;
+    public PhoneMenu MenuApp => _menuApp;
 
     public GameObject ScreensObject => _screensObject;
     public PanelSettings ScreenPanelSettings => _screenPanelSettings;

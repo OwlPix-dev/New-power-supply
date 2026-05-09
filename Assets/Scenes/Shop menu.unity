@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &260792293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6020538791222762263, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
+  m_PrefabInstance: {fileID: 1361037956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b785cd9c5c7c984f86d6303a19c1b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &269689071
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +251,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &271339070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7840904657628798311, guid: 5cf913cf1392ad6419669bbea5ce6473, type: 3}
+  m_PrefabInstance: {fileID: 938932411}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db442d0e78b9a614780eef4f5782f875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &659154985
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +274,6 @@ GameObject:
   - component: {fileID: 659154990}
   - component: {fileID: 659154989}
   - component: {fileID: 659154988}
-  - component: {fileID: 659154987}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -275,22 +296,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1208554897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &659154987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659154985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93fb385e44d65d40afeb3956805f481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levelPhoto: {fileID: -1010361471, guid: bbac19ed935549245a85880f65e23675, type: 3}
-  _levelName: First level WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-  _levelDescrip: jdsfdksdfsjhdfjsjfkshfsvsnjsncnjdsjsncdsjcnccnWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-  _sceneName: 1 level
 --- !u!65 &659154988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -377,7 +382,9 @@ GameObject:
   - component: {fileID: 669834442}
   - component: {fileID: 669834441}
   - component: {fileID: 669834440}
-  - component: {fileID: 669834439}
+  - component: {fileID: 669834445}
+  - component: {fileID: 669834444}
+  - component: {fileID: 669834443}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -400,22 +407,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1208554897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &669834439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669834437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93fb385e44d65d40afeb3956805f481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levelPhoto: {fileID: -1010361471, guid: bbac19ed935549245a85880f65e23675, type: 3}
-  _levelName: First level WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-  _levelDescrip: jdsfdksdfsjhdfjsjfkshfsvsnjsncnjdsjsncdsjcnccnWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-  _sceneName: 1 level
 --- !u!65 &669834440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -490,6 +481,111 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669834437}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &669834443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669834437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4067041cea577d4a948a873bff9118c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainObject: {fileID: 669834445}
+  _itemName: To Level
+  _itemHotKey: 0
+--- !u!114 &669834444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669834437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee303918d439e5f458327057e59360bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainObject: {fileID: 669834445}
+  _itemName: Info
+  _itemHotKey: 0
+--- !u!114 &669834445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669834437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a50dee29b0f47342af996759a3ac0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuItems:
+  - {fileID: 669834444}
+  - {fileID: 669834443}
+  _isMustPlayerSee: 0
+  _isCanInteraction: 1
+  _sceneSettings: {fileID: 11400000, guid: 4e918998c3b08e941a4f0f2bf7871e1a, type: 2}
+--- !u!1 &761374236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761374238}
+  - component: {fileID: 761374237}
+  m_Layer: 0
+  m_Name: Player manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &761374237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761374236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f49da5c64889b4898f61bf14a0a813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _playerTransform: {fileID: 0}
+  _playerCenter: {fileID: 0}
+  _characterController: {fileID: 0}
+  _capsuleCollider: {fileID: 0}
+  _playerInventory: {fileID: 0}
+  _playerScrollItems: {fileID: 0}
+  _playerStateMachine: {fileID: 0}
+  _playerMovementState: {fileID: 0}
+  _playerIdleState: {fileID: 0}
+  _playerInventoriesDataTag: PlayerInventoriesData
+  _cameraManager: {fileID: 260792293}
+  _uIManager: {fileID: 271339070}
+--- !u!4 &761374238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761374236}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &761536386
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +724,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7840904657628798311, guid: 5cf913cf1392ad6419669bbea5ce6473, type: 3}
+      propertyPath: _playerManager
+      value: 
+      objectReference: {fileID: 761374237}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -645,7 +745,6 @@ GameObject:
   - component: {fileID: 1058230829}
   - component: {fileID: 1058230828}
   - component: {fileID: 1058230827}
-  - component: {fileID: 1058230826}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -668,22 +767,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1208554897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1058230826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1058230824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93fb385e44d65d40afeb3956805f481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levelPhoto: {fileID: -1010361471, guid: bbac19ed935549245a85880f65e23675, type: 3}
-  _levelName: First level WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-  _levelDescrip: jdsfdksdfsjhdfjsjfkshfsvsnjsncnjdsjsncdsjcnccnWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-  _sceneName: 1 level
 --- !u!65 &1058230827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -881,6 +964,18 @@ PrefabInstance:
       propertyPath: _minRestrictionPoint.z
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 3330423837368263675, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
+      propertyPath: _availableInteractionObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330423837368263675, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
+      propertyPath: '_availableInteractionObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 669834445}
+    - target: {fileID: 6020538791222762263, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
+      propertyPath: _playerManager
+      value: 
+      objectReference: {fileID: 761374237}
     - target: {fileID: 9190644393131782363, guid: ccdd82b0ab4971242bfb83cdd95ffc11, type: 3}
       propertyPath: m_Name
       value: Camera control
@@ -902,7 +997,6 @@ GameObject:
   - component: {fileID: 1735245316}
   - component: {fileID: 1735245315}
   - component: {fileID: 1735245314}
-  - component: {fileID: 1735245313}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -925,23 +1019,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1208554897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1735245313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735245311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93fb385e44d65d40afeb3956805f481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levelPhoto: {fileID: 1525314145, guid: bbac19ed935549245a85880f65e23675, type: 3}
-  _levelName: rtyuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuushfjd
-    dsbkfbsfskdfksfjssfkjdsfsff
-  _levelDescrip: fsdvfghgfghfghf
-  _sceneName: 
 --- !u!65 &1735245314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1024,3 +1101,4 @@ SceneRoots:
   - {fileID: 269689074}
   - {fileID: 1208554897}
   - {fileID: 938932411}
+  - {fileID: 761374238}

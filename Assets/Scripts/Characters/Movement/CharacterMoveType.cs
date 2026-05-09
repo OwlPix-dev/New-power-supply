@@ -11,6 +11,7 @@ public class CharacterMoveType : ScriptableObject
 
     [SerializeField] private float _colliderRadius = 0.35f;
     [SerializeField] private float _colliderHeight = 1.6f;
+    [SerializeField] private float _stepOffset = 0.5f;
     [SerializeField] private Vector3 _colliderCenter = new Vector3(0f, 0.9f, 0f);
 
     public float MoveSpeed => _moveSpeed;
@@ -19,5 +20,6 @@ public class CharacterMoveType : ScriptableObject
 
     public float ColliderRadius => _colliderRadius;
     public float ColliderHeight => _colliderHeight;
+    public float StepOffset => _stepOffset;
     public Vector3 ColliderCenter => _colliderCenter;
 }

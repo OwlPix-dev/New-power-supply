@@ -58,9 +58,9 @@ public class PhonePositionType : ScriptableObject
 
             homeButton.clicked += () =>
             {
-                if (screen.CurrentApp == screen.DefaultApp) { return; }
+                if (screen.CurrentApp == phoneController.DefaultApp) { return; }
 
-                screen.OpenApp(screen.DefaultApp, phoneController);
+                screen.OpenApp(phoneController.DefaultApp, phoneController);
             };
 
             root.Add(homeButton);

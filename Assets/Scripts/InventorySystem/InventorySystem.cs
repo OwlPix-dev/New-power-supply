@@ -49,9 +49,9 @@ public abstract class InventorySystem : MonoBehaviour
         }
     }
 
-    private void Start()
+    public virtual void Start()
     {
-        CalculateInventoryGrid();
+        CalculateInventoryGrid(null);
     }
 
     public void CalculateGrid<T>(List<List<T>> grid, Vector2Int newGridSize)
@@ -86,11 +86,11 @@ public abstract class InventorySystem : MonoBehaviour
         }
     }
 
-    public virtual void CalculateInventoryGrid(bool isInventoryRender = false)
+    public virtual void CalculateInventoryGrid(PlayerManager playerManager, bool isInventoryRender = false)
     {
         CalculateGrid(_inventoryGrid, GetInventoryGridSize());
 
-        if (isInventoryRender == true) { InventoryRender(); }
+        if (isInventoryRender == true) { InventoryRender(playerManager); }
     }
 
     public void RenderInventoryUI(UIDocument uIDocument, bool isFixedX = true, bool isFixedY = true)
@@ -212,7 +212,7 @@ public abstract class InventorySystem : MonoBehaviour
         return newSlot;
     }
 
-    public bool AddItem(Item newItem, bool isInventoryRender = false)
+    public bool AddItem(Item newItem, PlayerManager playerManager, bool isInventoryRender = false)
     {
         if (newItem == null) { return false; }
 
@@ -224,7 +224,7 @@ public abstract class InventorySystem : MonoBehaviour
         {
             for (int x = 0; x < maxAxis.x; x++)
             {
-                if (TryPlaceItem(newItem, new Vector2Int(x, y), occupancyGrid, isInventoryRender) == true)
+                if (TryPlaceItem(newItem, new Vector2Int(x, y), occupancyGrid, isInventoryRender, playerManager) == true)
                 {
                     return true;
                 }
@@ -234,18 +234,18 @@ public abstract class InventorySystem : MonoBehaviour
         return false;
     }
 
-    public bool AddItemByPosition(Item newItem, Vector2Int newItemPosition, bool isInventoryRender = false)
+    public bool AddItemByPosition(Item newItem, Vector2Int newItemPosition, PlayerManager playerManager, bool isInventoryRender = false)
     {
         if (newItem == null) { return false; }
 
-        return TryPlaceItem(newItem, newItemPosition, GetOccupancyGrid(), isInventoryRender);
+        return TryPlaceItem(newItem, newItemPosition, GetOccupancyGrid(), isInventoryRender, playerManager);
     }
 
-    private bool TryPlaceItem(Item item, Vector2Int itemPosition, bool[,] occupancyGrid, bool isInventoryRender)
+    private bool TryPlaceItem(Item item, Vector2Int itemPosition, bool[,] occupancyGrid, bool isInventoryRender, PlayerManager playerManager)
     {
         if (IsCanPlaceItem(item, itemPosition, occupancyGrid) == true)
         {
-            PlaceItem(item, itemPosition, isInventoryRender);
+            PlaceItem(item, itemPosition, isInventoryRender, playerManager);
 
             return true;
         }
@@ -253,14 +253,14 @@ public abstract class InventorySystem : MonoBehaviour
         return false;
     }
 
-    public virtual void PlaceItem(Item item, Vector2Int itemPosition, bool isInventoryRender)
+    public virtual void PlaceItem(Item item, Vector2Int itemPosition, bool isInventoryRender, PlayerManager playerManager)
     {
         _inventoryGrid[itemPosition.x][itemPosition.y] = item;
 
-        if (isInventoryRender == true) { InventoryRender(); }
+        if (isInventoryRender == true) { InventoryRender(playerManager); }
     }
 
-    public bool RemoveItem(Item removeItem, bool isInventoryRender = false)
+    public bool RemoveItem(Item removeItem, PlayerManager playerManager, bool isInventoryRender = false)
     {
         Vector2Int maxAxis = InventoryGridMaxAxis;
 
@@ -270,7 +270,7 @@ public abstract class InventorySystem : MonoBehaviour
             {
                 if (removeItem == _inventoryGrid[x][y])
                 {
-                    PlaceItem(null, new Vector2Int(x, y), isInventoryRender);
+                    PlaceItem(null, new Vector2Int(x, y), isInventoryRender, playerManager);
 
                     return true;
                 }
@@ -280,11 +280,11 @@ public abstract class InventorySystem : MonoBehaviour
         return false;
     }
 
-    public bool RemoveItemByPosition(Vector2Int removeItemPosition, bool isInventoryRender = false)
+    public bool RemoveItemByPosition(Vector2Int removeItemPosition, PlayerManager playerManager, bool isInventoryRender = false)
     {
         if (_inventoryGrid[removeItemPosition.x][removeItemPosition.y] != null)
         {
-            PlaceItem(null, removeItemPosition, isInventoryRender);
+            PlaceItem(null, removeItemPosition, isInventoryRender, playerManager);
 
             return true;
         }
@@ -346,24 +346,29 @@ public abstract class InventorySystem : MonoBehaviour
         return occupancyGrid;
     }
 
-    public virtual bool PickItem(Vector2Int itemPosition)
+    public DragAndDropData GetNecessaryDragAndDropData(PlayerManager playerManager)
     {
-        return RemoveItemByPosition(itemPosition, isInventoryRender: true);
+        return playerManager.UIManager.DragAndDropItems.DragAndDropData.FirstOrDefault(data => data.InventorySystem == this);
     }
 
-    public virtual bool PutItem(Item item, Vector2Int itemPosition)
+    public virtual bool PickItem(Vector2Int itemPosition, PlayerManager playerManager)
     {
-        return AddItemByPosition(item, itemPosition, isInventoryRender: true);
+        return RemoveItemByPosition(itemPosition, playerManager, isInventoryRender: true);
     }
 
-    public virtual bool LoseItem(Item item, Vector2Int itemBackPosition)
+    public virtual bool PutItem(Item item, Vector2Int itemPosition, PlayerManager playerManager, InventorySystem inventorySystem)
     {
-        return AddItemByPosition(item, itemBackPosition, isInventoryRender: true);
+        return AddItemByPosition(item, itemPosition, playerManager, isInventoryRender: true);
+    }
+
+    public virtual bool LoseItem(Item item, Vector2Int itemBackPosition, PlayerManager playerManager)
+    {
+        return AddItemByPosition(item, itemBackPosition, playerManager, isInventoryRender: true);
     }
 
     public abstract Vector2Int GetInventoryGridSize();
 
-    public abstract void InventoryRender();
+    public abstract void InventoryRender(PlayerManager playerManager);
 }
 
 [System.Serializable]

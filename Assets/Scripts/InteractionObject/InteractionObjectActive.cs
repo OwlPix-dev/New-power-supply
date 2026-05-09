@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class InteractionObjectMenuItem : MonoBehaviour
+public abstract class InteractionObjectActive : MonoBehaviour
 {
     [SerializeField] private InteractionObject _mainObject;
 
@@ -24,5 +24,5 @@ public abstract class InteractionObjectMenuItem : MonoBehaviour
 
     public virtual void CloseMenuItem(PlayerManager playerManager) { }
 
-    public abstract void ItemActive(PlayerManager playerManager);
+    public abstract bool Active(PlayerManager playerManager);
 }

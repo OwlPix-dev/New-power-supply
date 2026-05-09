@@ -53,6 +53,7 @@ public class PlayerMove : CharacterMove
                 bool isChangeCollider = _playerManager.PlayerMovementState.PlayerChangeCollider.ChangeCollider(
                     newMoveType.ColliderRadius,
                     newMoveType.ColliderHeight,
+                    newMoveType.StepOffset,
                     newMoveType.ColliderCenter);
 
                 if (isChangeCollider) { CurrentMoveType = newMoveType; }

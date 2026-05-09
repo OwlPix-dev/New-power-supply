@@ -1,13 +1,23 @@
 VisualElement {
 }
 
-.apps-container {
+.menu-frame {
     width: 500px;
     height: 700px;
     background-color: rgb(93, 93, 93);
     padding-left: 12px;
     flex-wrap: wrap;
     padding-top: 12px;
+}
+
+.systemic-apps {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.external-apps {
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .app-container {

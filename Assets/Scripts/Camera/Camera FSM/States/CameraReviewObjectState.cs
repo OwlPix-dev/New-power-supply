@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class CameraReviewObjectState : CameraState
@@ -14,33 +13,30 @@ public class CameraReviewObjectState : CameraState
 
     [SerializeField] private KeyCode _backKey = KeyCode.X;
 
-    private List<ReviewObject> _reviewObjects = new List<ReviewObject>();
-
-    private Transform _transform;
+    private List<ReviewActive> _reviewObjects = new List<ReviewActive>();
 
     private Transform _reviewPoint => _reviewObjects[_reviewObjects.Count - 1].ReviewPoint;
 
-    private void Awake()
-    {
-        _transform = transform;
-    }
-
     private void Update()
     {
-        if (_reviewPoint == null) { return; }
-
-        if ((_reviewPoint.position - _transform.position).sqrMagnitude > _minMoveDistance)
+        if (_reviewPoint == null)
         {
-            _transform.position = Vector3.Lerp(
-                _transform.position,
+            RemoveReviewObject(_reviewObjects[_reviewObjects.Count - 1]);
+            return;
+        }
+
+        if ((_reviewPoint.position - _cameraManager.CameraTransform.position).sqrMagnitude > _minMoveDistance)
+        {
+            _cameraManager.CameraTransform.position = Vector3.Lerp(
+                _cameraManager.CameraTransform.position,
                 _reviewPoint.position,
                 _reviewSpeed * Time.deltaTime);
         }
 
-        if ((_transform.eulerAngles - _reviewPoint.forward).sqrMagnitude > _minRotateDistance)
+        if ((_cameraManager.CameraTransform.eulerAngles - _reviewPoint.forward).sqrMagnitude > _minRotateDistance)
         {
-            _transform.rotation = Quaternion.RotateTowards(
-                _transform.rotation,
+            _cameraManager.CameraTransform.rotation = Quaternion.RotateTowards(
+                _cameraManager.CameraTransform.rotation,
                 Quaternion.LookRotation(_reviewPoint.forward),
                 _rotateSpeed * Time.deltaTime);
         }
@@ -51,7 +47,7 @@ public class CameraReviewObjectState : CameraState
         }
     }
 
-    public void AddReviewObject(ReviewObject newReviewObject)
+    public void AddReviewObject(ReviewActive newReviewObject)
     {
         _reviewObjects.Add(newReviewObject);
 
@@ -64,7 +60,7 @@ public class CameraReviewObjectState : CameraState
         }
     }
 
-    public void RemoveReviewObject(ReviewObject removeReviewObject)
+    public void RemoveReviewObject(ReviewActive removeReviewObject)
     {
         removeReviewObject.CancelReview(_cameraManager.PlayerManager);
         _reviewObjects.Remove(removeReviewObject);

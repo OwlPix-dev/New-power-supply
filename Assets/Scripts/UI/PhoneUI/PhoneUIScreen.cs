@@ -7,7 +7,8 @@ public class PhoneUIScreen : ScriptableObject
     [SerializeField] private Vector2 _screenPosition = new Vector2(430, 185);
     [SerializeField] private Vector2 _screenSize = new Vector2(500, 700);
 
-    [SerializeField] private PhoneApp _defaultApp;
+    [SerializeField] private string _screenObjectName = "Screen";
+
     private PhoneApp _currentApp;
 
     private UIDocument _appUIDocument;
@@ -15,23 +16,22 @@ public class PhoneUIScreen : ScriptableObject
     public Vector2 ScreenPosition => _screenPosition;
     public Vector2 ScreenSize => _screenSize;
 
-    public PhoneApp DefaultApp => _defaultApp;
     public PhoneApp CurrentApp => _currentApp;
 
     public UIDocument AppUIDocument => _appUIDocument;
 
     public void OpenApp(PhoneApp newApp, PhoneUIController phoneController)
     {
-        newApp = newApp ?? _defaultApp;
+        newApp = newApp ?? phoneController.DefaultApp;
 
-        if (_currentApp == newApp) { return; }
+        if (ReferenceEquals(_currentApp, newApp) == true) { return; }
 
         _currentApp?.CloseApp(this, phoneController);
         _currentApp = newApp;
 
         if (_appUIDocument == null)
         {
-            GameObject screenObject = new GameObject("Screen");
+            GameObject screenObject = new GameObject(_screenObjectName);
             screenObject.transform.SetParent(phoneController.ScreensObject.transform);
 
             _appUIDocument = screenObject.AddComponent<UIDocument>();
@@ -72,9 +72,8 @@ public class PhoneUIScreen : ScriptableObject
 
     public void CloseScreen(PhoneUIController phoneController)
     {
-        if (_currentApp != null) { _currentApp.PhoneController = null; }
-        if (_currentApp != null) { _currentApp.AppScreens.Clear(); }
-
         CloseApp(phoneController);
+
+        if (_currentApp != null) { _currentApp = null; }
     }
 }

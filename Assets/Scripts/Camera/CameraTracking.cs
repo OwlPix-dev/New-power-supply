@@ -10,26 +10,20 @@ public class CameraTracking : MonoBehaviour
     [SerializeField] private float _minDistance = 0.001f;
 
     [SerializeField] private Transform _trackerTransform;
-    private Transform _transform;
-
-    private void Awake()
-    {
-        _transform = transform;
-    }
 
     private void LateUpdate()
     {
         Vector3 realyOffset = new Vector3(
-            _cameraOffset.x * _transform.right.x + _cameraOffset.z * _transform.forward.x,
+            _cameraOffset.x * _cameraManager.CameraTransform.right.x + _cameraOffset.z * _cameraManager.CameraTransform.forward.x,
             _cameraOffset.y,
-            _cameraOffset.z * _transform.forward.z + _cameraOffset.x * _transform.right.z);
+            _cameraOffset.z * _cameraManager.CameraTransform.forward.z + _cameraOffset.x * _cameraManager.CameraTransform.right.z);
 
         Vector3 targetPosition = _trackerTransform.position + realyOffset;
 
-        if ((targetPosition - _transform.position).sqrMagnitude > _minDistance)
+        if ((targetPosition - _cameraManager.CameraTransform.position).sqrMagnitude > _minDistance)
         {
-            _transform.position = Vector3.Lerp(
-            _transform.position,
+            _cameraManager.CameraTransform.position = Vector3.Lerp(
+            _cameraManager.CameraTransform.position,
             targetPosition,
             _moveSpeed * Time.deltaTime);
         }

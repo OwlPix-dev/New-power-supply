@@ -26,11 +26,11 @@ public class CameraInteractionObject : MonoBehaviour
 
     private VisualElement _contextMenu;
 
-    private List<InteractionObjectMenuItem> _currentMenuItems = new List<InteractionObjectMenuItem>();
+    private List<InteractionObjectActive> _currentMenuItems = new List<InteractionObjectActive>();
 
     public List<InteractionObject> AvailableInteractionObjects => _availableInteractionObjects;
 
-    public List<InteractionObjectMenuItem> CurrentMenuItems => _currentMenuItems;
+    public List<InteractionObjectActive> CurrentMenuItems => _currentMenuItems;
 
     public bool IsOpenContextMenu => _contextMenu.style.visibility == Visibility.Visible;
 
@@ -43,8 +43,7 @@ public class CameraInteractionObject : MonoBehaviour
 
     private void Update()
     {
-        if (_cameraManager.PlayerManager.UIManager.CurrentUI != _cameraManager.PlayerManager.UIManager.BasicUIController ||
-            _availableInteractionObjects.Count <= 0) { return; }
+        if (_availableInteractionObjects.Count <= 0) { return; }
 
         if (Input.GetMouseButtonDown(_openContextMenuMouseIndex) == true)
         {
@@ -102,9 +101,18 @@ public class CameraInteractionObject : MonoBehaviour
 
             if (cameraInteractionObject != null)
             {
+                bool isInteractionObjectAvailable = _availableInteractionObjects.Contains(cameraInteractionObject);
+
                 if (_isPlayerCheck == false || cameraInteractionObject.IsMustPlayerSee == false)
                 {
-                    return cameraInteractionObject;
+                    if (isInteractionObjectAvailable == true)
+                    {
+                        return cameraInteractionObject;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
 
                 Vector3 playerPosition = _cameraManager.PlayerManager.PlayerCenter.position;
@@ -115,7 +123,6 @@ public class CameraInteractionObject : MonoBehaviour
                 {
                     InteractionObject playerInteractionObject = playerHit.collider.GetComponent<InteractionObject>();
 
-                    bool isInteractionObjectAvailable = _availableInteractionObjects.Contains(playerInteractionObject);
                     bool isInteractionObjectMatches = cameraInteractionObject == playerInteractionObject;
                     bool isReturnInteractionObject = isInteractionObjectMatches == true && isInteractionObjectAvailable == true;
 
@@ -127,13 +134,13 @@ public class CameraInteractionObject : MonoBehaviour
         return null;
     }
 
-    private void OpenContextMenu(InteractionObjectMenuItem[] menuItems)
+    private void OpenContextMenu(InteractionObjectActive[] menuItems)
     {
         RemoveMenuItems();
 
         _currentMenuItems = menuItems.ToList();
 
-        foreach (InteractionObjectMenuItem menuItem in _currentMenuItems)
+        foreach (InteractionObjectActive menuItem in _currentMenuItems)
         {
             Button newMenuItemButton = new Button();
             newMenuItemButton.AddToClassList(_menuItemClassName);
@@ -154,8 +161,10 @@ public class CameraInteractionObject : MonoBehaviour
 
             newMenuItemButton.clicked += () =>
             {
-                CloseContextMenu();
-                menuItem.ItemActive(_cameraManager.PlayerManager);
+                if (menuItem.Active(_cameraManager.PlayerManager) == true)
+                {
+                    CloseContextMenu();
+                }
             };
 
             _contextMenu.Add(newMenuItemButton);
